@@ -5,9 +5,9 @@
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.4">
-<meta name="author" content="Benjamin Muschko">
+<meta name="author" content="Rob Fletcher">
 <meta name="copyright" content="Apache License, Version 2.0">
-<title>Grails Google Visualization Plugin - Reference Documentation</title>
+<title>Jodatime Plugin - Reference Documentation</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
@@ -422,10 +422,10 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </head>
 <body class="book toc2 toc-left">
 <div id="header">
-<h1>Grails Google Visualization Plugin - Reference Documentation</h1>
+<h1>Jodatime Plugin - Reference Documentation</h1>
 <div class="details">
-<span id="author" class="author">Benjamin Muschko</span><br>
-<span id="revnumber">version 2.3-SNAPSHOT</span>
+<span id="author" class="author">Rob Fletcher</span><br>
+<span id="revnumber">version 2.0.0</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
@@ -433,53 +433,47 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#introduction">1. Introduction</a>
 <ul class="sectlevel2">
 <li><a href="#features">1.1. Features</a></li>
-<li><a href="#issues">1.2. Issues</a></li>
+<li><a href="#knowIssues">1.2. Known Issues</a></li>
 <li><a href="#releaseNotes">1.3. Release Notes</a></li>
 <li><a href="#acknowledgements">1.4. Acknowledgments</a></li>
 <li><a href="#license">1.5. License</a></li>
 </ul>
 </li>
-<li><a href="#usage">2. Usage</a>
+<li><a href="#persistence">2. Persistence</a>
 <ul class="sectlevel2">
-<li><a href="#installation">2.1. Installation</a></li>
-<li><a href="#configuration">2.2. Configuration</a></li>
-<li><a href="#basicUsage">2.3. Basic usage</a></li>
-<li><a href="#examples">2.4. Examples</a></li>
-<li><a href="#events">2.5. Events</a></li>
-<li><a href="#formatters">2.6. Formatters</a></li>
+<li><a href="#persistence-with-hibernate">2.1. Persistence with Hibernate</a></li>
+<li><a href="#persistence-with-other-gorm-implementations">2.2. Persistence with other GORM implementations</a></li>
 </ul>
 </li>
-<li><a href="#charts">3. Charts</a>
+<li><a href="#databinding">3. Data Binding</a>
 <ul class="sectlevel2">
-<li><a href="#pieChart">3.1. Pie Chart</a></li>
-<li><a href="#barChart">3.2. Bar Chart</a></li>
-<li><a href="#bubbleChart">3.3. Bubble Chart</a></li>
-<li><a href="#columnChart">3.4. Column Chart</a></li>
-<li><a href="#areaChart">3.5. Area Chart</a></li>
-<li><a href="#lineChart">3.6. Line Chart</a></li>
-<li><a href="#scatterChart">3.7. Scatter Chart</a></li>
-<li><a href="#steppedAreaChart">3.8. Stepped Area Chart</a></li>
-<li><a href="#candlestickChart">3.9. Candlestick Chart</a></li>
-<li><a href="#comboChart">3.10. Combo Chart</a></li>
-<li><a href="#gauge">3.11. Gauge</a></li>
-<li><a href="#table">3.12. Table</a></li>
-<li><a href="#map">3.13. Map</a></li>
-<li><a href="#annotatedTimeLine">3.14. Annotated Time Line</a></li>
-<li><a href="#annotationChart">3.15. Annotation Chart</a></li>
-<li><a href="#orgChart">3.16. Org Chart</a></li>
-<li><a href="#intensityMap">3.17. Intensity Map</a></li>
-<li><a href="#geoMap">3.18. Geo Map</a></li>
-<li><a href="#geoChart">3.19. Geo Chart</a></li>
-<li><a href="#motionChart">3.20. Motion Chart</a></li>
-<li><a href="#treeMap">3.21. Tree Map</a></li>
-<li><a href="#timeline">3.22. Timeline</a></li>
-<li><a href="#calendarChart">3.23. Calendar Chart</a></li>
-<li><a href="#dataTableRoles">3.24. Data Table Roles</a></li>
+<li><a href="#binding-text-inputs">3.1. Binding text inputs</a></li>
+<li><a href="#html5-input-types">3.2. HTML5 input types</a></li>
 </ul>
 </li>
-<li><a href="#visualizations">4. Visualizations</a>
+<li><a href="#tags">4. Tags</a>
 <ul class="sectlevel2">
-<li><a href="#available-visualizations">4.1. Available Visualizations</a></li>
+<li><a href="#dateField">4.1. joda:dateField</a></li>
+<li><a href="#datePicker">4.2. joda:datePicker</a></li>
+<li><a href="#dateTimePicker">4.3. joda:dateTimePicker</a></li>
+<li><a href="#dateTimeZoneSelect">4.4. joda:dateTimeZoneSelect</a></li>
+<li><a href="#datetimeField">4.5. joda:datetimeField</a></li>
+<li><a href="#datetimeLocalField">4.6. joda:datetimeLocalField</a></li>
+<li><a href="#formatPeriod">4.7. joda:formatPeriod</a></li>
+<li><a href="#inputPattern">4.8. joda:inputPattern</a></li>
+<li><a href="#monthField">4.9. joda:monthField</a></li>
+<li><a href="#periodPicker">4.10. joda:periodPicker</a></li>
+<li><a href="#time">4.11. joda:time</a></li>
+<li><a href="#timeField">4.12. joda:timeField</a></li>
+<li><a href="#weekField">4.13. joda:weekField</a></li>
+</ul>
+</li>
+<li><a href="#Scaffolding">5. Scaffolding</a></li>
+<li><a href="#jsonandxml">6. JSON and XML Rendering</a></li>
+<li><a href="#integrating">7. Integrating with Other Plugins</a>
+<ul class="sectlevel2">
+<li><a href="#a-href-http-freeside-co-grails-fields-fields-a">7.1. <a href="http://freeside.co/grails-fields">Fields</a></a></li>
+<li><a href="#a-href-http-grails-org-plugin-grails-ui-grails-ui-a">7.2. <a href="http://grails.org/plugin/grails-ui">Grails UI</a></a></li>
 </ul>
 </li>
 </ul>
@@ -490,316 +484,253 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <h2 id="introduction">1. Introduction</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>This plugin provides a taglib for the interactive charts of the <a href="https://developers.google.com/chart/">Google Visualization API</a>.</p>
+<p>The Joda-Time Plugin integrates the <a href="http://www.joda.org/joda-time/">Joda-Time</a> date/time library into Grails.</p>
 </div>
 <div class="paragraph">
-<p>In addition to this document, you may want to read the Google Visualization documentation <a href="https://developers.google.com/chart/">here</a>.</p>
+<p>In addition to this document, you may want to read the official Joda-time documentation <a href="http://www.joda.org/joda-time/">here</a>.</p>
 </div>
 <div class="sect2">
 <h3 id="features">1.1. Features</h3>
 <div class="ulist">
 <ul>
 <li>
-<p>Supports the following visualizations: Annotated Time Line, Area Chart, Bar Chart, Bubble Chart, Candlestick Chart, Column Chart, Combo Chart, Gauge, Geo Chart Geo Map, Intensity Map, Line Chart, Map, Motion Chart, Organizational Chart, Pie Chart, Scatter Chart, Stepped Area Chart, Table Chart, Time Line Chart and Tree Map. See the <a href="https://developers.google.com/chart/interactive/docs/gallery">gallery</a> for more information.</p>
+<p>Provides the ability to bind from form inputs to Joda Time fields on domain or command objects.</p>
 </li>
 <li>
-<p>Implements redesigned charts (Area, Bar, Bubble, Candlestick, Column, Combo, Line, Pie, Scatter and Stepped Area Charts) from the previously known as "Core Chart package" as well as the deprecated versions.</p>
+<p>Adds unit testing support for domain classes that use Joda Time properties.</p>
 </li>
 <li>
-<p>Provides implementations for <a href="https://developers.google.com/chart/interactive/docs/gallery/table#Formatters">table formatters</a> TableArrowFormat, TableBarFormat, TableColorFormat, TableDateFormat, TableNumberFormat and TablePatternFormat.</p>
+<p>Supports JSON and XML rendering of Joda Time types.</p>
 </li>
 <li>
-<p>Visualization <a href="https://developers.google.com/chart/interactive/docs/events">Event Handling</a>.</p>
+<p>Provides tag-libs for input and output of Joda Time data.</p>
 </li>
 <li>
-<p>Provides support for <a href="https://developers.google.com/chart/interactive/docs/roles">Data Tables Roles</a> (since version 1.0)</p>
+<p>Enhances Grails' scaffolding to support domain classes with Joda Time fields.</p>
+</li>
+<li>
+<p>Adds compatibility and consistency methods to Joda Time types so that they integrate better with Groovy.</p>
+</li>
+<li>
+<p>Provides templates for rendering inputs using the Fields plugin.</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="issues">1.2. Issues</h3>
+<h3 id="knowIssues">1.2. Known Issues</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>It is currently not possible to do certain types of criteria query with DateTime properties mapped using PersistentLocalDateTimeWithZone (or any other multi-column Hibernate UserType). Aggregate functions (max, min, avg, count, etc.) in projections will not work on such properties and neither will the 'between' criterion.</p>
+</li>
+<li>
+<p>Data binding to properties of embedded types does not work correctly (see <a href="http://jira.grails.org/browse/GPJODATIME-21">GPJODATIME-21</a>).</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
 <div class="paragraph">
-<p>The old <a href="http://jira.grails.org/browse/GPGOOGLEVISUALIZATIONAPI">JIRA</a> links for Grails are not working anymore, so please ignore the issues links in documentation. Also, all issues must be reported to <a href="https://github.com/bmuschko/grails-google-visualization/issues">GitHub Issues</a>.</p>
+<p>Old JIRA links for Grails are not working anymore, so please ignore the issues links in documentation. Also, all issues must be reported to <a href="https://github.com/gpc/joda-time/issues">Joda-time GitHub Issues</a>.</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 </div>
 <div class="sect2">
 <h3 id="releaseNotes">1.3. Release Notes</h3>
 <div class="ulist">
-<div class="title">October 09, 2015 (version 2.0)</div>
+<div class="title">2.0.0</div>
 <ul>
 <li>
-<p>Provides support for Grails 3.x</p>
+<p>Migrated the plugin to support Grails 3</p>
 </li>
 </ul>
 </div>
 <div class="ulist">
-<div class="title">January 07, 2015 (version 1.0.1)</div>
+<div class="title">1.4</div>
 <ul>
 <li>
-<p>Added "title" config option to Calendar chart. Although it does not appear in the API documentation, the examples show that it is available.</p>
+<p><a href="http://jira.grails.org/browse/GPJODATIME-24">GPJODATIME-24</a> Adds templates for the Fields plugin.</p>
+</li>
+<li>
+<p><a href="http://jira.grails.org/browse/GPJODATIME-15">GPJODATIME-15</a> Fixes compatibility with Grails &lt; 2.</p>
+</li>
+<li>
+<p><a href="http://jira.grails.org/browse/GPJODATIME-24">GPJODATIME-24</a> Adds templates for <a href="http://freeside.co/grails-fields">Fields plugin</a> compatibility.</p>
+</li>
+<li>
+<p><a href="http://jira.grails.org/browse/GPJODATIME-23">GPJODATIME-23</a> Fixes rendering of date/time pickers with null values.</p>
 </li>
 </ul>
 </div>
 <div class="ulist">
-<div class="title">January 04, 2015 (version 1.0)</div>
+<div class="title">1.3.1</div>
 <ul>
 <li>
-<p>Updates the configuration options to the current Google Charts API. Important! This might introduce some backward compatibility issues as some parameters have been removed, replaced or have changed type. Eg: tooltipText and tooltipTextStyle replaced by tooltip of type object, &#8230;&#8203; (This will be noted in the README.md file and the <a href="https://github.com/bmuschko/grails-google-visualization/wiki/changelog">changelog wiki page</a>)</p>
-</li>
-<li>
-<p>Removed support for Image Charts as they are no longer part of the Google Charts API</p>
-</li>
-<li>
-<p>Now the object type can be declared using the Map notation as the preferred option instead of using an Expando object declaration. It still can be used though to avoid backward compatibility issues. Example: <code>legend="${[position: 'top', alignment: 'center']}"</code> instead of: <code>legend="${new Expando(position: 'top', alignment: 'center')}"</code></p>
-</li>
-<li>
-<p>Replaced scriptlets with EL expressions in javascript template.</p>
-</li>
-<li>
-<p>Fixes issue <a href="https://github.com/bmuschko/grails-google-visualization/issues/15">#15</a></p>
-</li>
-<li>
-<p>Other minor fixes and tasks</p>
+<p><a href="http://jira.grails.org/browse/GPJODATIME-17">GPJODATIME-17</a> Adds binding and scaffolding support for <code>Instant</code>.</p>
 </li>
 </ul>
 </div>
 <div class="ulist">
-<div class="title">December 11, 2014 (version 0.7.2)</div>
+<div class="title">1.3</div>
 <ul>
 <li>
-<p>Fixes bug <a href="https://github.com/bmuschko/grails-google-visualization/issues/32">#32</a>: the "error" event handling should be declared before drawing the chart and not after.</p>
+<p>Upgrades joda-time library to 2.0.</p>
+</li>
+<li>
+<p>Removes <code>joda-time-hibernate</code> as a default dependency so that plugin can be used with alternate GORM implementations.</p>
+</li>
+<li>
+<p>Adds Grails 2 unit testing support.</p>
+</li>
+<li>
+<p>Adds joda:time tag.</p>
+</li>
+<li>
+<p>Adds <code>next()</code> and <code>previous()</code> methods to <code>ReadableInstant</code> and <code>ReadablePartial</code>.</p>
+</li>
+<li>
+<p>Adds overridden <code>step</code> method on <code>Range</code>.</p>
 </li>
 </ul>
 </div>
 <div class="ulist">
-<div class="title">November 28, 2014 (version 0.7.1)</div>
+<div class="title">1.2</div>
 <ul>
 <li>
-<p>Fixes bugs <a href="https://github.com/bmuschko/grails-google-visualization/issues/28">#28</a> and <a href="https://github.com/bmuschko/grails-google-visualization/issues/24">#24</a>: Grails 2.3+ XSS prevention mechanism was HTML encoding the javascript output of the taglib and therefore breaking it. There is also a reference in JIRA: [GPGOOGLEVISUALIZATIONAPI-14])</p>
+<p>Upgrades joda-time library to 1.6.2</p>
+</li>
+<li>
+<p>Upgrades joda-time-hibernate to 1.2</p>
 </li>
 </ul>
 </div>
 <div class="ulist">
-<div class="title">April 30, 2014 (version 0.7)</div>
+<div class="title">1.1</div>
 <ul>
 <li>
-<p>Fix ObjectRenderer to properly filter class and metaClass properties (see <a href="https://github.com/bmuschko/grails-google-visualization/pull/23">pull request #23</a>).</p>
-</li>
-<li>
-<p>Add support for Timeline and Calendar charts (see <a href="https://github.com/bmuschko/grails-google-visualization/pull/22">pull request #22</a>).</p>
+<p>Adds HTML5 binding and tag libs</p>
 </li>
 </ul>
 </div>
 <div class="ulist">
-<div class="title">May 9, 2013 (version 0.6.2)</div>
+<div class="title">1.0</div>
 <ul>
 <li>
-<p>Enable use of candlestick options (see <a href="https://github.com/bmuschko/grails-google-visualization/pull/12">pull request 12</a>).</p>
+<p>Adds joda:formatPeriod tag</p>
+</li>
+<li>
+<p>Allows joda:inputPattern to accept String attributes for convenience</p>
+</li>
+<li>
+<p>Fixes bug with joda:format that meant selected format was never displayed</p>
 </li>
 </ul>
 </div>
 <div class="ulist">
-<div class="title">February 3, 2013 (version 0.6.1)</div>
+<div class="title">0.5.1</div>
 <ul>
 <li>
-<p>Fixed HTML codec issues (see <a href="https://github.com/bmuschko/grails-google-visualization/pull/11">pull request 11</a>).</p>
+<p>Upgrades joda-time-hibernate to version 1.2</p>
+</li>
+<li>
+<p>Allows no-selection option to work with StructuredDateTimeEditor</p>
 </li>
 </ul>
 </div>
 <div class="ulist">
-<div class="title">November 11, 2012 (version 0.6)</div>
+<div class="title">0.5</div>
 <ul>
 <li>
-<p>Internal cleanup (see <a href="https://github.com/bmuschko/grails-google-visualization/pull/10">pull request 10</a>).</p>
+<p>Adds JSON and XML rendering support.</p>
+</li>
+<li>
+<p>Adds binding and scaffolding support for Duration and Period.</p>
+</li>
+<li>
+<p>Fixes compatibility problem with Grails 1.1 and 1.1.1.</p>
 </li>
 </ul>
 </div>
 <div class="ulist">
-<div class="title">October 14, 2012 (version 0.5.6)</div>
+<div class="title">0.4.3</div>
 <ul>
 <li>
-<p>Added missing bar attribute to several charts.</p>
+<p>No longer automatically tries to install scaffolding templates (use <code>grails install-joda-time-templates</code> instead).</p>
+</li>
+<li>
+<p>list.gsp and show.gsp templates are not used when application&#8217;s Grails version is 1.2+ as they are not needed.</p>
 </li>
 </ul>
 </div>
 <div class="ulist">
-<div class="title">August 18, 2012 (version 0.5.5)</div>
+<div class="title">0.4.2</div>
 <ul>
 <li>
-<p>Support forceIFrame parameter(see <a href="http://jira.grails.org/browse/GPGOOGLEVISUALIZATIONAPI-12">GPGOOGLEVISUALIZATIONAPI-12</a>).</p>
+<p>No longer tries to reinstall templates that are already installed.</p>
+</li>
+<li>
+<p>Adds DateTimeUtils.withCurrentTimestampFixed and withCurrentTImestampOffset</p>
+</li>
+<li>
+<p>Supports all Groovy mathematical operators on Joda Seconds, Minutes, Hours, Days, Months, Years, etc. classes.</p>
 </li>
 </ul>
 </div>
 <div class="ulist">
-<div class="title">August 12, 2012 (version 0.5.4)</div>
+<div class="title">0.4.1</div>
 <ul>
 <li>
-<p>Support vAxes parameter (see <a href="http://jira.grails.org/browse/GPGOOGLEVISUALIZATIONAPI-11">GPGOOGLEVISUALIZATIONAPI-11</a>).</p>
+<p>Fixes template installation on Windows machines where Ant&#8217;s patch task does not work.</p>
 </li>
 </ul>
 </div>
 <div class="ulist">
-<div class="title">July 8, 2012 (version 0.5.3)</div>
+<div class="title">0.4</div>
 <ul>
 <li>
-<p>Support for pattern property in NumberFormatter (see <a href="http://jira.grails.org/browse/GPGOOGLEVISUALIZATIONAPI-10">GPGOOGLEVISUALIZATIONAPI-10</a>).</p>
+<p>Fixes corrupted template files from previous version.</p>
+</li>
+<li>
+<p>Fixes template compatibility with Grails 1.0.4.</p>
 </li>
 </ul>
 </div>
 <div class="ulist">
-<div class="title">May 26, 2012 (version 0.5.2)</div>
+<div class="title">0.3</div>
 <ul>
 <li>
-<p>Added isStacked attribute for ComboCoreChart.</p>
+<p>Adds the dynamic format(String) method on ReadableInstant and ReadablePartial.</p>
+</li>
+<li>
+<p>Fixes installation script for Grails 1.0.4.</p>
+</li>
+<li>
+<p>Plugin requires Grails 1.0.4 + as earlier versions don&#8217;t support registering custom editors.</p>
 </li>
 </ul>
 </div>
 <div class="ulist">
-<div class="title">May 17, 2012 (version 0.5.1)</div>
+<div class="title">0.2</div>
 <ul>
 <li>
-<p>Provided support for marker style in GeoChart (see <a href="http://jira.grails.org/browse/GPGOOGLEVISUALIZATIONAPI-7">GPGOOGLEVISUALIZATIONAPI-7</a>)</p>
-</li>
-<li>
-<p>Upgrade to Grails 2.0.1 and Release plugin 2.0.0.</p>
+<p>Fixes bug where registration of structured date/time editor overrides registration of text &#8594; date/time editor.</p>
 </li>
 </ul>
 </div>
 <div class="ulist">
-<div class="title">January 29, 2012 (version 0.5)</div>
+<div class="title">0.1</div>
 <ul>
 <li>
-<p>Added new visualizations: Bubble Chart, Stepped Area Chart.</p>
-</li>
-<li>
-<p>Allow all visualizations to use String data type for the attributes height and width (see <a href="http://jira.grails.org/browse/GPGOOGLEVISUALIZATIONAPI-5">GPGOOGLEVISUALIZATIONAPI-5</a>).</p>
-</li>
-<li>
-<p>Allow all visualizations to use formatters (see <a href="http://jira.grails.org/browse/GPGOOGLEVISUALIZATIONAPI-6">GPGOOGLEVISUALIZATIONAPI-6</a>).</p>
-</li>
-<li>
-<p>Provided taglib for Google JavaScript API import.</p>
-</li>
-</ul>
-</div>
-<div class="ulist">
-<div class="title">December 3, 2011 (version 0.4.3)</div>
-<ul>
-<li>
-<p>Ready event has to be defined before calling draw on visualization (see <a href="http://jira.grails.org/browse/GPGOOGLEVISUALIZATIONAPI-3">GPGOOGLEVISUALIZATIONAPI-3</a>).</p>
-</li>
-</ul>
-</div>
-<div class="ulist">
-<div class="title">October 2, 2011 (version 0.4.2)</div>
-<ul>
-<li>
-<p>Ready event has to be defined before calling draw on visualization (see <a href="http://jira.grails.org/browse/GPGOOGLEVISUALIZATIONAPI-2">GPGOOGLEVISUALIZATIONAPI-2</a>).</p>
-</li>
-</ul>
-</div>
-<div class="ulist">
-<div class="title">August 27, 2011 (version 0.4.1)</div>
-<ul>
-<li>
-<p>Updated core chart parameters (see Google&#8217;s <a href="http://code.google.com/apis/chart/interactive/docs/release_notes.html#72011">release notes</a>).</p>
-</li>
-</ul>
-</div>
-<div class="ulist">
-<div class="title">May 20, 2011 (version 0.4)</div>
-<ul>
-<li>
-<p>Added new visualizations: Geo Chart, Candlestick Chart and Combo Chart.</p>
-</li>
-<li>
-<p>Exposed visualization parameter to set API version.</p>
-</li>
-</ul>
-</div>
-<div class="ulist">
-<div class="title">May 17, 2011 (version 0.3.1)</div>
-<ul>
-<li>
-<p>Updated core chart parameters (see Google&#8217;s <a href="http://code.google.com/apis/chart/interactive/docs/release_notes.html#v03212011">release notes</a>).</p>
-</li>
-</ul>
-</div>
-<div class="ulist">
-<div class="title">March 20, 2011 (version 0.3)</div>
-<ul>
-<li>
-<p>Updated core chart parameters (see Google&#8217;s <a href="http://code.google.com/apis/visualization/documentation/release_notes.html#v01172011">release notes</a>).</p>
-</li>
-<li>
-<p>Added Candlestick image chart.</p>
-</li>
-</ul>
-</div>
-<div class="ulist">
-<div class="title">November 10, 2010 (version 0.2.4)</div>
-<ul>
-<li>
-<p>Updated core chart parameters (see Google&#8217;s <a href="http://code.google.com/apis/visualization/documentation/release_notes.html#v11072010">release notes</a>).</p>
-</li>
-<li>
-<p>Improved String data type handling (see <a href="http://jira.grails.org/browse/GPGOOGLEVISUALIZATIONAPI-1">GPGOOGLEVISUALIZATIONAPI-1</a>).</p>
-</li>
-</ul>
-</div>
-<div class="ulist">
-<div class="title">August 26, 2010 (version 0.2.3)</div>
-<ul>
-<li>
-<p>Updated core chart parameters (see Google&#8217;s <a href="http://code.google.com/apis/visualization/documentation/release_notes.html#08112010">release notes</a>).</p>
-</li>
-</ul>
-</div>
-<div class="ulist">
-<div class="title">August 4, 2010 (version 0.2.2)</div>
-<ul>
-<li>
-<p>Exposed visualization data JavaScript object (google.visualization.DataTable).</p>
-</li>
-<li>
-<p>Bugfixes: String parameters and cell labels needed to be escaped.</p>
-</li>
-</ul>
-</div>
-<div class="ulist">
-<div class="title">July 8, 2010 (version 0.2.1)</div>
-<ul>
-<li>
-<p>Added onmouseover/onmouseout events to treemap.</p>
-</li>
-<li>
-<p>Support for <a href="http://code.google.com/apis/ajax/documentation/#Dynamic">dynamic loading</a>.</p>
-</li>
-</ul>
-</div>
-<div class="ulist">
-<div class="title">June 5, 2010 (version 0.2)</div>
-<ul>
-<li>
-<p>Added new visualization Tree Map.</p>
-</li>
-<li>
-<p>Added image charts: Pie Chart, Bar Chart, Area Chart, Line Chart and Sparkline.</p>
-</li>
-<li>
-<p>Map now provides the Terrain type.</p>
-</li>
-<li>
-<p>Support for <a href="http://code.google.com/apis/visualization/documentation/reference.html#cell_object">cell object</a>.</p>
-</li>
-</ul>
-</div>
-<div class="ulist">
-<div class="title">May 27, 2010 (version 0.1)</div>
-<ul>
-<li>
-<p>Initial version.</p>
+<p>Initial release</p>
 </li>
 </ul>
 </div>
@@ -814,40 +745,31 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="ulist">
 <ul>
 <li>
-<p><a href="https://github.com/bmuschko">Benjamin Muschko</a></p>
+<p><a href="https://github.com/robfletcher">Rob Fletcher</a></p>
 </li>
 <li>
-<p><a href="https://github.com/aruizca">Angel Ruiz</a></p>
+<p><a href="https://github.com/burtbeckwith">Burt Beckwith</a></p>
 </li>
 <li>
-<p><a href="https://github.com/mansi90">Mansi Arora</a></p>
+<p><a href="https://github.com/jamescookie">James Cook</a></p>
+</li>
+<li>
+<p><a href="https://github.com/michaelcameron">Michael Cameron</a></p>
+</li>
+<li>
+<p><a href="https://github.com/graemerocher">Graeme Rocher</a></p>
+</li>
+<li>
+<p><a href="https://github.com/stokito">Sergey Ponomarev</a></p>
 </li>
 <li>
 <p><a href="https://github.com/robertoschwald">Robert Oschwald</a></p>
 </li>
 <li>
-<p><a href="https://github.com/meudaypratap">Uday Pratap Singh</a></p>
-</li>
-<li>
-<p><a href="https://github.com/tcrossland">Tom Crossland</a></p>
-</li>
-<li>
-<p><a href="https://github.com/sdonyh">Sdonyh</a></p>
-</li>
-<li>
-<p><a href="https://github.com/anarcticpuffin">Ryan</a></p>
-</li>
-<li>
-<p><a href="https://github.com/ionis">Lewis Norton</a></p>
-</li>
-<li>
-<p><a href="https://github.com/zoran119">Zoran Stojakovic</a></p>
+<p><a href="https://github.com/ColinHarrington">Colin Harrington</a></p>
 </li>
 <li>
 <p><a href="https://github.com/puneetbehl">Puneet Behl</a></p>
-</li>
-<li>
-<p><a href="https://github.com/vmille">Vmille</a></p>
 </li>
 </ul>
 </div>
@@ -862,189 +784,18 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 <div class="sect1">
-<h2 id="usage">2. Usage</h2>
+<h2 id="persistence">2. Persistence</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="installation">2.1. Installation</h3>
-<div class="sect3">
-<h4 id="for-grails-3-x">2.1.1. For Grails 3.x</h4>
+<h3 id="persistence-with-hibernate">2.1. Persistence with Hibernate</h3>
 <div class="paragraph">
-<p>Add the following dependency under <code>build.gradle</code>:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="prettyprint highlight"><code class="language-groovy" data-lang="groovy">compile "org.grails.plugins:grails-google-visualization:2.0"</code></pre>
-</div>
-</div>
+<p>In order to persist Joda Time properties with Hibernate you first need to add one of the following dependencies to your application&#8217;s <code>BuildConfig.groovy</code> file:</p>
 </div>
 <div class="sect3">
-<h4 id="for-grails-2-x">2.1.2. For Grails 2.x</h4>
-<div class="paragraph">
-<p>Add the following plugin under plugins in BuildConfig.groovy:</p>
-</div>
+<h4 id="to-use-the-newer-a-href-http-jadira-sourceforge-net-usertype-core-index-html-usertype-library-a">2.1.1. To use the newer <a href="http://jadira.sourceforge.net/usertype.core/index.html">Usertype Library</a></h4>
 <div class="listingblock">
 <div class="content">
-<pre class="prettyprint highlight"><code class="language-groovy" data-lang="groovy">compile ":google-visualization:1.0.1"</code></pre>
-</div>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="configuration">2.2. Configuration</h3>
-<div class="paragraph">
-<p>To get started using the Google Maps JavaScript API, you need to define an API key in the application configuration as follows:</p>
-</div>
-<div class="listingblock">
-<div class="title">application.yml</div>
-<div class="content">
-<pre class="prettyprint highlight"><code class="language-yaml" data-lang="yaml">google:
-    maps:
-        key: YOUR_API_KEY</code></pre>
-</div>
-</div>
-<div class="sect3">
-<h4 id="get-a-key-authentication">2.2.1. Get a Key/Authentication</h4>
-<div class="paragraph">
-<p>All Google Maps JavaScript API applications require authentication. Please <a href="https://developers.google.com/maps/documentation/javascript/get-api-key">click here</a> to read about authentication/key or to get an API key.</p>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="basicUsage">2.3. Basic usage</h3>
-<div class="ulist">
-<ul>
-<li>
-<p>The page you want to use the visualization in has to import the <a href="http://code.google.com/apis/visualization/documentation/using_overview.html#Including_the_Visualization_API_on_Your_Page">Google visualization API JavaScript library</a>. You can do so by using the taglib <code>&lt;gvisualization:apiImport/&gt;</code> or by importing it using the HTML script tag.</p>
-</li>
-</ul>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="prettyprint highlight"><code class="language-javascript" data-lang="javascript">&lt;script type="text/javascript" src="https://www.google.com/jsapi"&gt;&lt;/script&gt;</code></pre>
-</div>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>All visualizations in the taglib use the namespace <em>*gvisualization*</em>.</p>
-</li>
-<li>
-<p>Apart from the configuration options specific to a visualization (see visualization specifications) there are multiple attributes that you have to set for your visualization.</p>
-</li>
-<li>
-<p><strong><em>name</em></strong> (optional) - JavaScript variable name for visualization object (defaults to "visualization").</p>
-</li>
-<li>
-<p><strong><em>version</em></strong> (optional) - API version for visualization object (defaults to "1").</p>
-</li>
-<li>
-<p><strong><em>elementId</em></strong> (required) - HTML div ID used to render visualization.</p>
-</li>
-<li>
-<p><strong><em>dynamicLoading</em></strong> (optional) - Renders visualization over <a href="http://code.google.com/apis/ajax/documentation/#Dynamic">dynamic loading</a> - required when rendered in AJAX response (defaults to false).</p>
-</li>
-<li>
-<p><strong><em>language</em></strong> (optional) - Forces <a href="http://code.google.com/apis/visualization/documentation/using_overview.html#localization">localized version</a> of visualization. The language property is a two-letter ISO 639-1 language code.</p>
-</li>
-<li>
-<p><strong><em>columns</em></strong> (required) - List of column data types and names to be displayed in the visualization.</p>
-</li>
-<li>
-<p><strong><em>data</em></strong> (required) - List of data to be displayed for columns.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>To express objects you use the Map notation inside an EL expression. Eg:
-[source,groovy]
-----
-legend="${[position: 'top', alignment: 'center']}"
-----</p>
-</li>
-<li>
-<p>If your data requires the usage of the <a href="http://code.google.com/apis/visualization/documentation/reference.html#cell_object">cell object</a> you can import and populate the class <code>org.grails.plugins.google.visualization.data.Cell</code>.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="examples">2.4. Examples</h3>
-<div class="sect3">
-<h4 id="rendering-a-visualization-in-a-gsp">2.4.1. Rendering a visualization in a GSP</h4>
-<div class="listingblock">
-<div class="content">
-<pre class="prettyprint highlight"><code class="language-groovy" data-lang="groovy">&lt;%
-def myDailyActivitiesColumns = [['string', 'Task'], ['number', 'Hours per Day']]
-def myDailyActivitiesData = [['Work', 11], ['Eat', 2], ['Commute', 2], ['Watch TV', 2], ['Sleep', 7]]
-%&gt;
-
-&lt;gvisualization:pieCoreChart elementId="piechart" title="My Daily Activities" width="${450}" height="${300}" columns="${myDailyActivitiesColumns}" data="${myDailyActivitiesData}" /&gt;
-
-&lt;div id="piechart"&gt;&lt;/div&gt;</code></pre>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="rendering-a-visualization-in-a-ajax-response">2.4.2. Rendering a visualization in a AJAX response</h4>
-<div class="listingblock">
-<div class="title">GSP (<code>grails-app/views/index.gsp</code>)</div>
-<div class="content">
-<pre class="prettyprint highlight"><code class="language-html" data-lang="html">&lt;input type="button" value="Render Pie Chart" onclick="${remoteFunction(controller:'visualization',action:'render',update:'chart')}"&gt;
-&lt;br&gt;
-&lt;div id="chart"&gt;&lt;/div&gt;</code></pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="title">Controller (<code>grails-app/controllers/VisualizationController.groovy</code>)</div>
-<div class="content">
-<pre class="prettyprint highlight"><code class="language-groovy" data-lang="groovy">class VisualizationController {
-  def render = {
-    def myDailyActivitiesColumns = [['string', 'Task'], ['number', 'Hours per Day']]
-    def myDailyActivitiesData = [['Work', 11], ['Eat', 2], ['Commute', 2], ['Watch TV', 2], ['Sleep', 7]]
-    render template: "chart", model: ["myDailyActivitiesColumns": myDailyActivitiesColumns,
-    "myDailyActivitiesData": myDailyActivitiesData]
-  }
-}</code></pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="title">Template (<code>grails-app/views/visualization/_chart.gsp</code>)</div>
-<div class="content">
-<pre class="prettyprint highlight"><code class="language-groovy" data-lang="groovy">&lt;div id="piechart"&gt;&lt;/div&gt;
-&lt;gvisualization:pieCoreChart dynamicLoading="${true}" elementId="piechart" title="My Daily Activities"
-width="${450}" height="${300}" columns="${myDailyActivitiesColumns}" data="${myDailyActivitiesData}"/&gt;</code></pre>
-</div>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="events">2.5. Events</h3>
-<div class="paragraph">
-<p>If you want to register an event handler for your visualization you can by adding an event attribute. The value you give that attribute is the name of the JavaScript function acting as callback handler. Please check the visualization specification for available event names.</p>
-</div>
-<div class="paragraph">
-<p>The variable name of the visualization JavaScript object by default is "<strong>visualization</strong>",  the name of the <code>google.visualization.DataTable</code> object is "<strong>visualization_data</strong>". You can always change the names by setting the taglib attribute <strong>"name"</strong>.</p>
-</div>
-<div class="listingblock">
-<div class="title">Example:</div>
-<div class="content">
-<pre class="prettyprint highlight"><code class="language-groovy" data-lang="groovy">&lt;%
-def employeeColumns = [['string', 'Name'], ['string', 'Salary'], ['boolean', 'Full Time Employee']]
-def employeeData = [['Mike', '$10,000', true], ['Jim', '$8,000', false], ['Alice', '$12,500', true],
-['Bob', '$7,000', true]]
-%&gt;
-
-&lt;script type="text/javascript"&gt;
-  function selectHandler(e) {
-    alert('A table row was selected');
-  }
-&lt;/script&gt;
-
-&lt;gvisualization:table elementId="table" width="${400}" height="${130}" columns="${employeeColumns}"
-data="${employeeData}" select="selectHandler" /&gt;
-&lt;div id="table"&gt;&lt;/div&gt;</code></pre>
+<pre class="prettyprint highlight"><code class="language-gradle" data-lang="gradle">compile "org.jadira.usertype:usertype.jodatime:1.9"</code></pre>
 </div>
 </div>
 <div class="admonitionblock note">
@@ -1055,59 +806,161 @@ data="${employeeData}" select="selectHandler" /&gt;
 </td>
 <td class="content">
 <div class="paragraph">
-<p>Since the <strong>Table visualization</strong> has both a "page" config option and a "page" event, to use the latest the taglib attribute is called <strong>"page-event"</strong>.</p>
+<p>There is a version 2.0 of the Usertype library but it requires Hibernate 4 so is not currently compatible with Grails.</p>
 </div>
 </td>
 </tr>
 </table>
 </div>
 </div>
-<div class="sect2">
-<h3 id="formatters">2.6. Formatters</h3>
-<div class="paragraph">
-<p>You can apply formatters to all visualizations using the "formatters" taglib attribute as the underlying implementation is a <a href="https://developers.google.com/chart/interactive/docs/reference?csw=1#DataTable">google.visualization.DataTable</a>.</p>
+<div class="sect3">
+<h4 id="to-use-the-older-a-href-http-joda-time-sourceforge-net-contrib-hibernate-index-html-joda-time-hibernate-library-a">2.1.2. To use the older <a href="http://joda-time.sourceforge.net/contrib/hibernate/index.html">Joda-Time Hibernate Library</a></h4>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-groovy" data-lang="groovy">compile("joda-time:joda-time-hibernate:1.3") {
+	excludes "joda-time", "hibernate"
+}</code></pre>
 </div>
-<div class="paragraph">
-<p>However, using formatters makes the most sense for the Table visualization.</p>
 </div>
+</div>
+<div class="sect3">
+<h4 id="adding-persistent-types-to-your-domain-classes">2.1.3. Adding persistent types to your domain classes</h4>
 <div class="paragraph">
-<p>A full set of examples can be found on this <a href="https://github.com/bmuschko/grails-google-visualization/blob/master/grails-app/views/formatter/index.gsp">GSP page</a>.The value you have to pass in is a list of classes implementing the <code>org.grails.plugins.google.visualization.formatter.Formatter</code> interface. The implementations you can apply are the following:</p>
+<p>To persist Joda Time properties you can use the Hibernate UserType implementations in the mapping block of your class. For example:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="prettyprint highlight"><code class="language-groovy" data-lang="groovy">org.grails.plugins.google.visualization.formatter.PatternFormatter
-org.grails.plugins.google.visualization.formatter.NumberFormatter
-org.grails.plugins.google.visualization.formatter.DateFormatter
-org.grails.plugins.google.visualization.formatter.ColorRange
-org.grails.plugins.google.visualization.formatter.ColorFormatter
-org.grails.plugins.google.visualization.formatter.BarFormatter
-org.grails.plugins.google.visualization.formatter.ArrowFormatter</code></pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="title">Example:</div>
-<div class="content">
-<pre class="prettyprint highlight"><code class="language-groovy" data-lang="groovy">&lt;%@ page import="org.grails.plugins.google.visualization.formatter.BarFormatter" %&gt;
-&lt;%
-def departmentRevenueColumns = [['string', 'Department'], ['number', 'Revenues']]
-def departmentRevenueData = [['Shoes', 10700], ['Sports', -15400], ['Toys', 12500], ['Electronics', -2100],
-['Food', 22600], ['Art', 1100]]
-def barFormatter = new BarFormatter(1)
-barFormatter.width = 120
-def barFormatters = [barFormatter]
-%&gt;
+<pre class="prettyprint highlight"><code class="language-groovy" data-lang="groovy">import org.joda.time.*
+import org.jadira.usertype.dateandtime.joda.*
 
-&lt;gvisualization:table elementId="barformat_div" allowHtml="${true}" showRowNumber="${true}"
-columns="${departmentRevenueColumns}" data="${departmentRevenueData}" formatters="${barFormatters}"/&gt;
-&lt;div id="barformat_div"&gt;&lt;/div&gt;</code></pre>
+class Person {
+    String name
+    LocalDate birthdate
+    static mapping = {
+    	birthdate type: PersistentLocalDate
+    }
+}</code></pre>
 </div>
 </div>
+<div class="paragraph">
+<p>This even works with some of the special functionality in Grails. For example fields <code>dateCreated</code> and <code>lastUpdated</code> in a Grails domain object will be updated automatically by the framework. Such properties do not have to be <code>java.util.Date</code> instances the functionality works fine if they are <code>org.joda.time.DateTime</code> or other types instead.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="adding-default-type-mappings">2.1.4. Adding default type mappings</h4>
+<div class="paragraph">
+<p>To avoid having to add type mappings to every single domain class in your application you can create a default mappings block in <code>application.groovy</code> that maps Joda Time types to their Hibernate user type implementation. For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-groovy" data-lang="groovy">grails.gorm.default.mapping = {
+	"user-type" type: org.jadira.usertype.dateandtime.joda.PersistentDateTime, class: org.joda.time.DateTime
+	"user-type" type: org.jadira.usertype.dateandtime.joda.PersistentLocalDate, class: org.joda.time.LocalDate
+	// ... define as many other user type mappings as you need
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The Joda Time plugin can even do this for you so long as you do not already have a <code>grails.gorm.default.mapping</code> section in your <code>Config.groovy</code> file. Just run <code>grails install-joda-time-gorm-mappings</code> and the plugin will add the standard mappings for all supported user types to your <code>Config.groovy</code> file.</p>
+</div>
+<div class="paragraph">
+<p>If you are using the older Joda Time Hibernate library then the package names for the user type classes is <code>org.joda.time.contrib.hibernate</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="multi-column-usertypes">2.1.5. Multi-column UserTypes</h4>
+<div class="paragraph">
+<p>To use multi-column types such as <a href="http://jadira.sourceforge.net/apidocs/org/jadira/usertype/dateandtime/joda/PersistentDateTimeWithZone.html">PersistentDateTimeWithZone</a> you need to include explicit mapping of both column names. For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-groovy" data-lang="groovy">import org.joda.time.*
+import org.jadira.usertype.dateandtime.joda.*
+
+class User {
+    DateTime registered
+    mapping {
+        registered type: PersistentDateTimeWithZone, {
+            column name: "registered_timestamp"
+            column name: "registered_zone"
+        }
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You can use any name you like for the columns.</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>It is currently not possible to do certain types of criteria query with <em>DateTime</em> properties mapped using <em>PersistentDateTimeWithZone</em> (or any other multi-column Hibernate UserType). Aggregate functions (max, min, avg, count, etc.) in projections will not work on such properties and neither will the <em>'between'</em> criterion.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="persistence-with-other-gorm-implementations">2.2. Persistence with other GORM implementations</h3>
+
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="charts">3. Charts</h2>
+<h2 id="databinding">3. Data Binding</h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>The Joda-Time plugin adds automatic binding support for the following types:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="http://joda-time.sourceforge.net/api-release/org/joda/time/LocalTime.html">LocalTime</a></p>
+</li>
+<li>
+<p><a href="http://joda-time.sourceforge.net/api-release/org/joda/time/LocalDate.html">LocalDate</a></p>
+</li>
+<li>
+<p><a href="http://joda-time.sourceforge.net/api-release/org/joda/time/LocalDateTime.html">LocalDateTime</a></p>
+</li>
+<li>
+<p><a href="http://joda-time.sourceforge.net/api-release/org/joda/time/DateTime.html">DateTime</a></p>
+</li>
+<li>
+<p><a href="http://joda-time.sourceforge.net/api-release/org/joda/time/Duration.html">Duration</a></p>
+</li>
+<li>
+<p><a href="http://joda-time.sourceforge.net/api-release/org/joda/time/Period.html">Period</a></p>
+</li>
+<li>
+<p><a href="http://joda-time.sourceforge.net/api-release/org/joda/time/DateTimeZone.html">DateTimeZone</a></p>
+</li>
+<li>
+<p><a href="http://joda-time.sourceforge.net/api-release/org/joda/time/Instant.html">Instant</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Properties can be bound to simple text fields or to picker controls (see below).</p>
+</div>
+<div class="sect2">
+<h3 id="binding-text-inputs">3.1. Binding text inputs</h3>
+<div class="paragraph">
+<p>By default text fields are bound in a locale-sensitive manner (e.g. to enter a LocalDate in the <em>en_GB</em> locale the format is <em>dd/MM/yy</em>, in the <em>en_US</em> locale the format is <em>MM/dd/yy</em> and so on). Alternatively formats can be defined per type in config using keys such as <em>'jodatime.format.org.joda.time.DateTime'</em> and <em>'jodatime.format.org.joda.time.LocalDate'</em> which is particularly useful when using rich UI type controls that may require a fixed format.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="html5-input-types">3.2. HTML5 input types</h3>
+<div class="paragraph">
+<p>The HTML5 standard supports <a href="http://diveintohtml5.org/forms.html#type-date">several new input types</a> that potentially useful for binding to Joda-Time properties. The input formats for those types are fixed rather than being locale-sensitive as they are designed for picker controls rendered by the browser or JavaScript. If you wish to use HTML5 inputs in your project simply set the config value <em>'jodatime.format.html5 = true'</em> in <em>Config.groovy</em> and the correct binding formats will be used.</p>
+</div>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -1116,711 +969,582 @@ columns="${departmentRevenueColumns}" data="${departmentRevenueData}" formatters
 </td>
 <td class="content">
 <div class="paragraph">
-<p>The Google Maps api that Google Charts uses to do geocoding of named locations has been updated several months ago (not sure
-how long) and the old uses appear to have been 'grandfathered' in without complaint. So, going forward we need to define API key as shown below while rendering Maps, GeoCharts etc.</p>
-</div>
-<div class="listingblock">
-<div class="title">application.yml</div>
-<div class="content">
-<pre class="prettyprint highlight"><code class="language-yaml" data-lang="yaml">google:
-    maps:
-        key: YOUR_API_KEY</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>To get a API key click <a href="https://developers.google.com/maps/documentation/javascript/get-api-key">here</a></p>
+<p>Any formats configured using <em>'jodatime.format.&lt;classname&gt;'</em> will override the HTML5 format for that type.</p>
 </div>
 </td>
 </tr>
 </table>
 </div>
-<div class="sect2">
-<h3 id="pieChart">3.1. Pie Chart</h3>
-<div class="listingblock">
-<div class="title">VisualizationController.groovy</div>
-<div class="content">
-<pre class="prettyprint highlight"><code class="language-groovy" data-lang="groovy">class VisualizationController {
-  def pieChart() {
-   List myDailyActivitiesColumns = [['string', 'Task'], ['number', 'Hours per Day']]
-   List myDailyActivitiesData = [['Work', 11], ['Eat', 2], ['Commute', 2], ['Watch TV', 2], ['Sleep', 7]]
-   render template: "pieChart", model: ["myDailyActivitiesColumns": myDailyActivitiesColumns,
-    "myDailyActivitiesData": myDailyActivitiesData]
-  }
-}</code></pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="title">_pieChart.gsp</div>
-<div class="content">
-<pre class="prettyprint highlight"><code class="language-groovy" data-lang="groovy">&lt;gvisualization:pieCoreChart elementId="piechart" title="My Daily Activities" width="${450}" height="${300}" columns="${myDailyActivitiesColumns}" data="${myDailyActivitiesData}" /&gt;
-
-
-&lt;div id="piechart"&gt;&lt;/div&gt;</code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="barChart">3.2. Bar Chart</h3>
-<div class="listingblock">
-<div class="title">VisualizationController.groovy</div>
-<div class="content">
-<pre class="prettyprint highlight"><code class="language-groovy" data-lang="groovy">class VisualizationController {
-  def barChart() {
-    List companyPerformanceColumns = [['string', 'Year'], ['number', 'Sales'], ['number', 'Expenses']]
-    List companyPerformanceData = [['2004', 1000, 400], ['2005', 1170, 460], ['2006', 660, 1120], ['2007', 1030, 540]]
-    render template: "barChart", model: ["companyPerformanceColumns": companyPerformanceColumns, "companyPerformanceData": companyPerformanceData]
-  }
-}</code></pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="title">_barChart.gsp</div>
-<div class="content">
-<pre class="prettyprint highlight"><code class="language-groovy" data-lang="groovy"> &lt;gvisualization:barCoreChart elementId="barchart" title="Company Performance" width="${400}" height="${240}" vAxis="${[title: 'Year', titleColor: 'red']}" columns="${companyPerformanceColumns}" data="${companyPerformanceData}" /&gt;
-
-
- &lt;div id="barchart"&gt;&lt;/div&gt;</code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="bubbleChart">3.3. Bubble Chart</h3>
-<div class="listingblock">
-<div class="title">VisualizationController.groovy</div>
-<div class="content">
-<pre class="prettyprint highlight"><code class="language-groovy" data-lang="groovy">class VisualizationController {
-  def bubbleChart() {
-	List lifeExpectancyFertilityRateColumns =[['string', 'ID'], ['number', 'Life Expectancy'], ['number', 'Fertility Rate'], ['string', 'Region'], ['number', 'Population']]
-    List lifeExpectancyFertilityRateData = [['CAN', 80.66, 1.67, 'North America', 33739900], ['DEU', 79.84, 1.36, 'Europe', 81902307], ['DNK', 78.6, 1.84, 'Europe', 5523095], ['EGY', 72.73, 2.78, 'Middle East', 79716203], ['GBR', 80.05, 2, 'Europe', 61801570], ['IRN', 72.49, 1.7, 'Middle East', 73137148], ['IRQ', 68.09, 4.77, 'Middle East', 31090763], ['ISR', 81.55, 2.96, 'Middle East', 7485600], ['RUS', 68.6, 1.54, 'Europe', 141850000], ['USA', 78.09, 2.05, 'North America', 307007000]]
-    render template: "bubbleChart", model: ["lifeExpectancyFertilityRateColumns":lifeExpectancyFertilityRateColumns, "lifeExpectancyFertilityRateData": lifeExpectancyFertilityRateData]
-  }
-}</code></pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="title">_bubbleChart.gsp</div>
-<div class="content">
-<pre class="prettyprint highlight"><code class="language-groovy" data-lang="groovy">&lt;gvisualization:bubbleCoreChart elementId="bubblechart" title="Correlation between life expectancy, fertility rate and population of some world countries (2010)" hAxis="${[title: 'Life Expectancy']}" vAxis="${[title: 'Fertility Rate']}" bubble="${[textStyle: '{fontSize: 11}']}" columns="${lifeExpectancyFertilityRateColumns}" data="${lifeExpectancyFertilityRateData}" /&gt;
-
-
-&lt;div id="bubblechart" style="width: 900px; height: 500px;"&gt;&lt;/div&gt;</code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="columnChart">3.4. Column Chart</h3>
-<div class="listingblock">
-<div class="title">VisualizationController.groovy</div>
-<div class="content">
-<pre class="prettyprint highlight"><code class="language-groovy" data-lang="groovy">class VisualizationController {
-  def columnChart() {
-	List companyPerformanceColumns = [['string', 'Year'], ['number', 'Sales'], ['number', 'Expenses']]
-   	List companyPerformanceData = [['2004', 1000, 400], ['2005', 1170, 460], ['2006', 660, 1120], ['2007', 1030, 540]]
-   	render template: "columnChart", model: ["companyPerformanceColumns":companyPerformanceColumns, "companyPerformanceData": companyPerformanceData]
-  }
-}</code></pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="title">_columnChart.gsp</div>
-<div class="content">
-<pre class="prettyprint highlight"><code class="language-groovy" data-lang="groovy">&lt;gvisualization:columnCoreChart elementId="columnchart" title="Company Performance" width="${400}" height="${240}" hAxis="${[title: 'Year', titleColor: 'red']}" columns="${companyPerformanceColumns}" data="${companyPerformanceData}" /&gt;
-
-
-&lt;div id="columnchart"&gt;&lt;/div&gt;</code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="areaChart">3.5. Area Chart</h3>
-<div class="listingblock">
-<div class="title">VisualizationController.groovy</div>
-<div class="content">
-<pre class="prettyprint highlight"><code class="language-groovy" data-lang="groovy">class VisualizationController {
-  def areaChart() {
-	List companyPerformanceColumns = [['string', 'Year'], ['number', 'Sales'], ['number', 'Expenses']]
-   	List companyPerformanceData = [['2004', 1000, 400], ['2005', 1170, 460], ['2006', 660, 1120], ['2007', 1030, 540]]
-   	render template: "areaChart", model: ["companyPerformanceColumns", companyPerformanceColumns, "companyPerformanceData": companyPerformanceData]
-  }
-}</code></pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="title">_areaChart.gsp</div>
-<div class="content">
-<pre class="prettyprint highlight"><code class="language-groovy" data-lang="groovy">&lt;gvisualization:areaCoreChart elementId="areachart" title="Company Performance" width="${400}" height="${240}" hAxis="${[title: 'Year', titleColor: 'red']}" columns="${companyPerformanceColumns}" data="${companyPerformanceData}" /&gt;
-
-
-&lt;div id="areachart"&gt;&lt;/div&gt;</code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="lineChart">3.6. Line Chart</h3>
-<div class="listingblock">
-<div class="title">VisualizationController.groovy</div>
-<div class="content">
-<pre class="prettyprint highlight"><code class="language-groovy" data-lang="groovy">class VisualizationController {
-  def lineChart() {
-	List companyPerformanceColumns = [['string', 'Year'], ['number', 'Sales'], ['number', 'Expenses']]
-   	List companyPerformanceData = [['2004', 1000, 400], ['2005', 1170, 460], ['2006', 660, 1120], ['2007', 1030, 540]]
-   	render template: "lineChart", model: ["companyPerformanceData": companyPerformanceData, "companyPerformanceColumns": companyPerformanceColumns]
-  }
-}</code></pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="title">_lineChart.gsp</div>
-<div class="content">
-<pre class="prettyprint highlight"><code class="language-groovy" data-lang="groovy">&lt;gvisualization:lineCoreChart elementId="linechart" width="${400}" height="${240}" title="Company Performance" columns="${companyPerformanceColumns}" data="${companyPerformanceData}" /&gt;
-
-&lt;div id="linechart"&gt;&lt;/div&gt;</code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="scatterChart">3.7. Scatter Chart</h3>
-<div class="listingblock">
-<div class="title">VisualizationController.groovy</div>
-<div class="content">
-<pre class="prettyprint highlight"><code class="language-groovy" data-lang="groovy">class VisualizationController {
-  def scatterChart() {
-	List weightByAgeColumns = [['number', 'Age'], ['number', 'Weight']]
-    List weightByAgeData = [[8, 12], [4, 5.5], [11, 14], [4, 5], [3, 3.5], [6.5, 7]]
-    render template: "scatterChart", model: ["weightByAgeData": weightByAgeData]
-  }
-}</code></pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="title">_scatterChart.gsp</div>
-<div class="content">
-<pre class="prettyprint highlight"><code class="language-groovy" data-lang="groovy">&lt;gvisualization:scatterCoreChart elementId="scatterchart" width="${400}" height="${240}" title="Age vs. Weight comparison" hAxis="${[title: 'Age', minValue: 0, maxValue: 15]}" vAxis="${[title: 'Weight', minValue: 0, maxValue: 15]}" legend="none" columns="${weightByAgeColumns}" data="${weightByAgeData}" /&gt;
-
-
-&lt;div id="scatterchart"&gt;&lt;/div&gt;</code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="steppedAreaChart">3.8. Stepped Area Chart</h3>
-<div class="listingblock">
-<div class="title">VisualizationController.groovy</div>
-<div class="content">
-<pre class="prettyprint highlight"><code class="language-groovy" data-lang="groovy">class VisualizationController {
-  def steppedAreaChart() {
-	List accumulatedRatingColumns = [['string', 'Director (Year)'], ['number', 'Rotten Tomatoes'], ['number', 'IMDB']]
-   	List accumulatedRatingData = [['Alfred Hitchcock (1935)', 8.4, 7.9], ['Ralph Thomas (1959)', 6.9, 6.5], ['Don Sharp (1978)',6.5, 6.4], ['James Hawes (2008)', 4.4, 6.2]]
-   	render template: "steppedAreaChart", model: ["accumulatedRatingColumns": accumulatedRatingColumns, "accumulatedRatingData":accumulatedRatingData]
-  }
-}</code></pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="title">_steppedAreaChart.gsp</div>
-<div class="content">
-<pre class="prettyprint highlight"><code class="language-groovy" data-lang="groovy">&lt;gvisualization:steppedAreaCoreChart elementId="steppedareachart" width="${400}" height="${240}" title="The decline of \'The 39 Steps\'" vAxis="${[title: 'Accumulated Rating']}" isStacked="${true}" columns="${accumulatedRatingColumns}" data="${accumulatedRatingData}" /&gt;
-
-
-&lt;div id="steppedareachart"&gt;&lt;/div&gt;</code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="candlestickChart">3.9. Candlestick Chart</h3>
-<div class="listingblock">
-<div class="title">VisualizationController.groovy</div>
-<div class="content">
-<pre class="prettyprint highlight"><code class="language-groovy" data-lang="groovy">class VisualizationController {
-  def columnChart() {
-    List countByDayColumns = [['string', 'Day'], ['number', ''], ['number', ''], ['number', ''], ['number', '']]
-    List countByDayData = [['Mon', 20, 28, 38, 45], ['Tues', 31, 38, 55, 66], ['Wed', 50, 55, 77, 80], ['Thurs', 50, 77, 66, 77], ['Fri', 15, 66, 22, 68]]
-   	Map candlestickOptions = [hollowIsRising: true]
-   	render template: "candlestickChart", model: ["countByDayColumns": countByDayColumns, "countByDayData": countByDayData, "candlestickOptions": candlestickOptions]
-  }
-}</code></pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="title">_candlestickChart.gsp</div>
-<div class="content">
-<pre class="prettyprint highlight"><code class="language-groovy" data-lang="groovy">&lt;gvisualization:candlestickCoreChart elementId="candlestickchart" legend="none" columns="${countByDayColumns}" data="${countByDayData}" candlestick="${candlestickOptions}" /&gt;
-
-
-&lt;div id="candlestickchart" style="width: 300px; height: 300px;"&gt;&lt;/div&gt;</code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="comboChart">3.10. Combo Chart</h3>
-<div class="listingblock">
-<div class="title">VisualizationController.groovy</div>
-<div class="content">
-<pre class="prettyprint highlight"><code class="language-groovy" data-lang="groovy">class VisualizationController {
-  def comboChart() {
-   List monthlyCoffeeProdByCountryColumns = [['string', 'Month'], ['number', 'Bolivia'], ['number', 'Ecuador'], ['number', 'Madagascar'], ['number', 'Papua  Guinea'], ['number', 'Rwanda'], ['number', 'Average']]
-   List monthlyCoffeeProdByCountryData = [['2004/05', 165, 938, 522, 998, 450, 614.6], ['2005/06', 135, 1120, 599, 1268, 288, 682], ['2006/07', 157, 1167, 587, 807, 397, 623], ['2007/08', 139, 1110, 615, 968, 215, 609.4], ['2008/09', 136, 691, 629, 1026, 366, 569.6]]
-   render template: "comboChart", model: ["monthlyCoffeeProdByCountryColumns": monthlyCoffeeProdByCountryColumns, "monthlyCoffeeProdByCountryData": monthlyCoffeeProdByCountryData]
-  }
-}</code></pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="title">_comboChart.gsp</div>
-<div class="content">
-<pre class="prettyprint highlight"><code class="language-groovy" data-lang="groovy">&lt;gvisualization:comboCoreChart elementId="combochart" title="Monthly Coffee Production by Country" vAxis="${[title: 'Cups']}" hAxis="${[title: 'Month']}" seriesType="bars" series="${[5: [type: 'line']]}" columns="${monthlyCoffeeProdByCountryColumns}" data="${monthlyCoffeeProdByCountryData}" /&gt;
-
-
-&lt;div id="combochart" style="width: 700px; height: 400px;"&gt;&lt;/div&gt;</code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="gauge">3.11. Gauge</h3>
-<div class="listingblock">
-<div class="title">VisualizationController.groovy</div>
-<div class="content">
-<pre class="prettyprint highlight"><code class="language-groovy" data-lang="groovy">class VisualizationController {
-  def gauge() {
-   List systemPerformanceColumns = [['string', 'Label'], ['number', 'Value']]
-   List systemPerformanceData = [['Memory', 80], ['CPU', 55], ['Network', 68]]
-   render template: "gauge", model: ["systemPerformanceColumns": systemPerformanceColumns, "systemPerformanceData": systemPerformanceData]
-  }
-}</code></pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="title">_gauge.gsp</div>
-<div class="content">
-<pre class="prettyprint highlight"><code class="language-groovy" data-lang="groovy">&lt;gvisualization:gauge elementId="gauge" width="${400}" height="${120}" redFrom="${90}" redTo="${100}" yellowFrom="${75}" yellowTo="${90}" minorTicks="${5}" columns="${systemPerformanceColumns}" data="${systemPerformanceData}" /&gt;
-
-
-&lt;div id="gauge"&gt;&lt;/div&gt;</code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="table">3.12. Table</h3>
-<div class="listingblock">
-<div class="title">VisualizationController.groovy</div>
-<div class="content">
-<pre class="prettyprint highlight"><code class="language-groovy" data-lang="groovy">class VisualizationController {
-  def table() {
-   List employeeColumns = [['string', 'Name'], ['string', 'Salary'], ['boolean', 'Full Time Employee']]
-   List employeeData = [['Mike', '$10,000', true], ['Jim', '$8,000', false], ['Alice', '$12,500', true], ['Bob', '$7,000', true]]
-   render template: "table", model: ["employeeColumns": employeeColumns, "employeeData": employeeData]
-  }
-}</code></pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="title">_table.gsp</div>
-<div class="content">
-<pre class="prettyprint highlight"><code class="language-groovy" data-lang="groovy">&lt;gvisualization:table elementId="table" width="${400}" height="${130}" columns="${employeeColumns}" data="${employeeData}" select="selectHandler" ready="readyHandler"/&gt;
-
-
-&lt;div id="table"&gt;&lt;/div&gt;</code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="map">3.13. Map</h3>
-<div class="listingblock">
-<div class="title">VisualizationController.groovy</div>
-<div class="content">
-<pre class="prettyprint highlight"><code class="language-groovy" data-lang="groovy">class VisualizationController {
-  def map() {
-   List mapColumns = [['number', 'Lat'], ['number', 'Lon'], ['string', 'Name']]
-   List mapData = [[37.4232, -122.0853, 'Work'], [37.4289, -122.1697, 'University'], [37.6153, -122.3900, 'Airport']
-   render template: "map", model: ["mapColumns": mapColumns, "mapData": mapData]
-  }
-}</code></pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="title">_map.gsp</div>
-<div class="content">
-<pre class="prettyprint highlight"><code class="language-groovy" data-lang="groovy">&lt;gvisualization:map elementId="map" columns="${mapColumns}" data="${mapData}" /&gt;
-
-
-&lt;div id="map" style="width: 400px; height: 300px"&gt;&lt;/div&gt;</code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="annotatedTimeLine">3.14. Annotated Time Line</h3>
-<div class="listingblock">
-<div class="title">VisualizationController.groovy</div>
-<div class="content">
-<pre class="prettyprint highlight"><code class="language-groovy" data-lang="groovy">class VisualizationController {
-  def annotatedTimeLine() {
-   List pensColumns = [['date', 'Date'], ['number', 'Sold Pencils'], ['string', 'title1'], ['string', 'text1'], ['number', 'Sold Pens'], ['string', 'title2'], ['string', 'text2']]
-   List pensData = [[DateUtil.createDate(2008, 1, 1), 30000, null, null, 40645, null, null], [DateUtil.createDate(2008, 1, 2), 14045, null, null, 20374, null, null], [DateUtil.createDate(2008, 1, 3), 55022, null, null, 50766, null, null], [DateUtil.createDate(2008, 1, 4), 75284, null, null, 14334, 'Out of Stock','Ran out of stock on pens at 4pm'], [DateUtil.createDate(2008, 1, 5), 41476, 'Bought Pens','Bought 200k pens', 66467, null, null], [DateUtil.createDate(2008, 1, 6), 33322, null, null, 39463, null, null]]
-   render template: "annotatedTimeLine", model: ["pensColumns": pensColumns, "pensData": pensData]
-  }
-}</code></pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="title">_annotatedTimeLine.gsp</div>
-<div class="content">
-<pre class="prettyprint highlight"><code class="language-groovy" data-lang="groovy">&lt;gvisualization:annotatedTimeLine elementId="annotatedtimeline" columns="${pensColumns}" data="${pensData}" /&gt;
-
-
-&lt;div id="annotatedtimeline" style='width: 700px; height: 240px;'&gt;&lt;/div&gt;</code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="annotationChart">3.15. Annotation Chart</h3>
-<div class="listingblock">
-<div class="title">VisualizationController.groovy</div>
-<div class="content">
-<pre class="prettyprint highlight"><code class="language-groovy" data-lang="groovy">class VisualizationController {
-  def annotationChart() {
-   List pensColumns = [['date', 'Date'], ['number', 'Sold Pencils'], ['string', 'title1'], ['string', 'text1'], ['number', 'Sold Pens'], ['string', 'title2'], ['string', 'text2']]
-   List pensData = [[DateUtil.createDate(2008, 1, 1), 30000, null, null, 40645, null, null], [DateUtil.createDate(2008, 1, 2), 14045, null, null, 20374, null, null], [DateUtil.createDate(2008, 1, 3), 55022, null, null, 50766, null, null], [DateUtil.createDate(2008, 1, 4), 75284, null, null, 14334, 'Out of Stock','Ran out of stock on pens at 4pm'], [DateUtil.createDate(2008, 1, 5), 41476, 'Bought Pens','Bought 200k pens', 66467, null, null], [DateUtil.createDate(2008, 1, 6), 33322, null, null, 39463, null, null]]
-   render template: "annotationChart", model: ["pensColumns": pensColumns, "pensData": pensData]
-  }
-}</code></pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="title">_annotationChart.gsp</div>
-<div class="content">
-<pre class="prettyprint highlight"><code class="language-groovy" data-lang="groovy">&lt;gvisualization:annotationChart elementId="annotationchart" columns="${pensColumns}" data="${pensData}" /&gt;
-
-
-&lt;div id="annotationchart" style='width: 700px; height: 240px;'&gt;&lt;/div&gt;</code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="orgChart">3.16. Org Chart</h3>
-<div class="listingblock">
-<div class="title">VisualizationController.groovy</div>
-<div class="content">
-<pre class="prettyprint highlight"><code class="language-groovy" data-lang="groovy">class VisualizationController {
-  def orgChart() {
-   def orgColumns = [['string', 'Name'], ['string', 'Manager'], ['string', 'ToolTip']]
-   def orgData = [[new Cell(value: 'Mike', label: 'Mike&lt;div style="color:red; font-style:italic"&gt;President&lt;/div&gt;'), '', 'The President'], [new Cell(value: 'Jim', label: 'Jim&lt;div style="color:red; font-style:italic"&gt;Vice President&lt;div&gt;'), 'Mike', 'VP'], ['Alice', 'Mike', ''], ['Bob', 'Jim', 'Bob Sponge'], ['Carol', 'Bob', '']]
-   render template: "orgChart", model: ["orgColumns": orgColumns, "orgData": orgData]
-  }
-}</code></pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="title">_orgChart.gsp</div>
-<div class="content">
-<pre class="prettyprint highlight"><code class="language-groovy" data-lang="groovy">&lt;gvisualization:orgChart elementId="orgchart" allowHtml="${true}" columns="${orgColumns}" data="${orgData}" /&gt;
-
-
-&lt;div id="orgchart"&gt;&lt;/div&gt;</code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="intensityMap">3.17. Intensity Map</h3>
-<div class="listingblock">
-<div class="title">VisualizationController.groovy</div>
-<div class="content">
-<pre class="prettyprint highlight"><code class="language-groovy" data-lang="groovy">class VisualizationController {
-  def intensityMap() {
-   def popularityColumns = [['string', 'Country'], ['number', 'Popularity']]
-   def popularityData = [['Germany', 200], ['United States', 300], ['Brazil', 400], ['Canada', 500], ['France', 600], ['RU', 700]]
-   render template: "intensityMap", model: ["populationColumns": populationColumns, "populationData": populationData]
-  }
-}</code></pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="title">_intensityMap.gsp</div>
-<div class="content">
-<pre class="prettyprint highlight"><code class="language-groovy" data-lang="groovy">&lt;gvisualization:intensityMap elementId="intensitymap" columns="${populationColumns}" data="${populationData}" /&gt;
-
-
-&lt;div id="intensitymap"&gt;&lt;/div&gt;</code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="geoMap">3.18. Geo Map</h3>
-<div class="listingblock">
-<div class="title">VisualizationController.groovy</div>
-<div class="content">
-<pre class="prettyprint highlight"><code class="language-groovy" data-lang="groovy">class VisualizationController {
-  def geoMap() {
-   	def popularityColumns = [['string', 'Country'], ['number', 'Popularity']]
-	def popularityData = [['Germany', 200], ['United States', 300], ['Brazil', 400], ['Canada', 500], ['France', 600], ['RU', 700]]
-   	render template: "geoMap", model: ["popularityColumns": popularityColumns, "popularityData": popularityData]
-  }
-}</code></pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="title">_geoMap.gsp</div>
-<div class="content">
-<pre class="prettyprint highlight"><code class="language-groovy" data-lang="groovy">&lt;gvisualization:geoMap elementId="geomap" columns="${popularityColumns}" data="${popularityData}" /&gt;
-
-
-&lt;div id="geomap"&gt;&lt;/div&gt;</code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="geoChart">3.19. Geo Chart</h3>
-<div class="listingblock">
-<div class="title">VisualizationController.groovy</div>
-<div class="content">
-<pre class="prettyprint highlight"><code class="language-groovy" data-lang="groovy">class VisualizationController {
-  def geoChart() {
-  	def popularityColumns = [['string', 'Country'], ['number', 'Popularity']]
-def popularityData = [['Germany', 200], ['United States', 300], ['Brazil', 400], ['Canada', 500], ['France', 600], ['RU', 700]]
-  	render template: "geoChart", model: ["popularityColumns": popularityColumns, "popularityData": popularityData]
-  }
-}</code></pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="title">_geoChart.gsp</div>
-<div class="content">
-<pre class="prettyprint highlight"><code class="language-groovy" data-lang="groovy">&lt;gvisualization:geoChart elementId="geochart" width="${556}" height="${347}" columns="${popularityColumns}" data="${popularityData}" /&gt;
-
-
-&lt;div id="geochart"&gt;&lt;/div&gt;</code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="motionChart">3.20. Motion Chart</h3>
-<div class="listingblock">
-<div class="title">VisualizationController.groovy</div>
-<div class="content">
-<pre class="prettyprint highlight"><code class="language-groovy" data-lang="groovy">class VisualizationController {
-  def motionChart() {
-   List fruitColumns = [['string', 'Fruit'], ['date', 'Date'], ['number', 'Sales'], ['number', 'Expenses'], ['string', 'Location']]
-   List fruitData = [['Apples', DateUtil.createDate(1988, 0, 1), 1000, 300, 'East'], ['Oranges', DateUtil.createDate(1988, 0, 1), 1150, 200, 'West'], ['Bananas', DateUtil.createDate(1988, 0, 1), 300, 250, 'West'], ['Apples', DateUtil.createDate(1989, 6, 1), 1200, 400, 'East'], ['Oranges', DateUtil.createDate(1989, 6, 1), 750, 150, 'West'], ['Bananas', DateUtil.createDate(1989, 6, 1), 788, 617, 'West']]
-   render template: "motionChart", model: ["fruitColumns": fruitColumns, "fruitData": fruitData]
-  }
-}</code></pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="title">_motionChart.gsp</div>
-<div class="content">
-<pre class="prettyprint highlight"><code class="language-groovy" data-lang="groovy">&lt;gvisualization:motionChart elementId="motionchart" columns="${fruitColumns}" data="${fruitData}" /&gt;
-
-
-&lt;div id="motionchart"&gt;&lt;/div&gt;</code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="treeMap">3.21. Tree Map</h3>
-<div class="listingblock">
-<div class="title">VisualizationController.groovy</div>
-<div class="content">
-<pre class="prettyprint highlight"><code class="language-groovy" data-lang="groovy">class VisualizationController {
-  def treeMap() {
-   List marketByRegionColumns = [['string', 'Region'], ['string', 'Parent'], ['number', 'Market trade volume (size)'], ['number', 'Market increase/decrease (color)']]
-   List marketByRegionData = [['Global', null, 0, 0], ['America', 'Global', 0, 0], ['Europe', 'Global', 0, 0], ['Asia', 'Global', 0, 0], ['Australia', 'Global', 0, 0], ['Africa', 'Global', 0, 0], ['Brazil', 'America', 11, 10], ['USA', 'America', 52, 31], ['Mexico', 'America', 24, 12], ['Canada', 'America', 16, -23], ['France', 'Europe', 42, -11], ['Germany', 'Europe', 31, -2], ['Sweden', 'Europe', 22, -13], ['Italy', 'Europe', 17, 4], ['UK', 'Europe', 21, -5], ['China', 'Asia', 36, 4], ['Japan', 'Asia', 20, -12], ['India', 'Asia', 40, 63], ['Laos', 'Asia', 4, 34], ['Mongolia', 'Asia', 1, -5], ['Israel', 'Asia', 12, 24], ['Iran', 'Asia', 18, 13], ['Pakistan', 'Asia', 11, -52], ['Egypt', 'Africa', 21, 0], ['S. Africa', 'Africa', 30, 43], ['Sudan', 'Africa', 12, 2], ['Congo', 'Africa', 10, 12], ['Zair', 'Africa', 8, 10]]
-   render template: "treeMap", model: ["marketByRegionColumns": marketByRegionColumns, "marketByRegionData": marketByRegionData]
-  }
-}</code></pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="title">_treeMap.gsp</div>
-<div class="content">
-<pre class="prettyprint highlight"><code class="language-groovy" data-lang="groovy">&lt;gvisualization:treeMap elementId="treemap" minColor="#f00" midColor="#ddd" maxColor="#0d0" headerHeight="${15}" fontColor="black" showScale="${true}" columns="${marketByRegionColumns}" data="${marketByRegionData}" /&gt;
-
-&lt;div id="treemap" style="width: 900px; height: 500px;"&gt;&lt;/div&gt;</code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="timeline">3.22. Timeline</h3>
-<div class="listingblock">
-<div class="title">VisualizationController.groovy</div>
-<div class="content">
-<pre class="prettyprint highlight"><code class="language-groovy" data-lang="groovy">class VisualizationController {
-  def timeline() {
-   List timelineColumns = [['string', 'President'], ['date', 'Start'], ['date', 'End']]
-   List timelineData = [['Washington',  DateUtil.createDate(1789, 3, 29),  DateUtil.createDate(1797, 2, 3)], ['Adams',  DateUtil.createDate(1797, 2, 3),  DateUtil.createDate(1801, 2, 3)], ['Jefferson',  DateUtil.createDate(1801, 2, 3),  DateUtil.createDate(1809, 2, 3)]]
-   render template: "timeline", model: ["timelineColumns": timelineColumns, "timelineData": timelineData]
-  }
-}</code></pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="title">_timeline.gsp</div>
-<div class="content">
-<pre class="prettyprint highlight"><code class="language-groovy" data-lang="groovy">&lt;gvisualization:timeLine elementId="timeline" columns="${timelineColumns}" data="${timelineData}" /&gt;
-
-
- &lt;div id="timeline"&gt;&lt;/div&gt;</code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="calendarChart">3.23. Calendar Chart</h3>
-<div class="listingblock">
-<div class="title">VisualizationController.groovy</div>
-<div class="content">
-<pre class="prettyprint highlight"><code class="language-groovy" data-lang="groovy">class VisualizationController {
-  def calendarChart() {
-   List calendarColumns = [['date', 'Date'], ['number', 'Won/Loss']]
-   List calendarData = [[DateUtil.createDate(2012, 3, 13), 37032], [DateUtil.createDate(2012, 3, 14), 38024], [DateUtil.createDate(2012, 3, 15), 38024], [DateUtil.createDate(2012, 3, 16), 38108], [DateUtil.createDate(2012, 3, 17), 38229]]
-   render template: "calendarChart", model: ["calendarColumns": calendarColumns, "calendarData": calendarData]
-  }
-}</code></pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="title">_calendarChart.gsp</div>
-<div class="content">
-<pre class="prettyprint highlight"><code class="language-groovy" data-lang="groovy">&lt;gvisualization:calendarChart elementId="calendarchart" columns="${calendarColumns}" data="${calendarData}" /&gt;
-
-
-&lt;div id="calendarchart"&gt;&lt;/div&gt;</code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="dataTableRoles">3.24. Data Table Roles</h3>
-<div class="listingblock">
-<div class="title">VisualizationController.groovy</div>
-<div class="content">
-<pre class="prettyprint highlight"><code class="language-groovy" data-lang="groovy">class VisualizationController {
-  def dataTableRoles() {
-   List dataTableRoleExampleColumns = [['string', 'Month'], ['number', 'Sales'], [type: 'number', role: 'interval'], [type:'number', role:'interval'], [type:'string', role:'annotation'], [type:'string', role:'annotationText'], [type:'boolean',role:'certainty']]
-   List dataTableRoleData = [
-           ['April',1000,  900, 1100,  'A','Stolen data', true],
-           ['May',  1170, 1000, 1200,  'B','Coffee spill', true],
-           ['June',  660,  550,  800,  'C','Wumpus attack', true],
-           ['July', 1030, null, null, null, null, false]
-   ]
-   render template: "dataTableRoles", model: ["dataTableRoleExampleColumns": dataTableRoleExampleColumns, "dataTableRoleData": dataTableRoleData]
-  }
-}</code></pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="title">_dataTableRoles.gsp</div>
-<div class="content">
-<pre class="prettyprint highlight"><code class="language-groovy" data-lang="groovy">&lt;gvisualization:lineCoreChart elementId="dataTableRoles" width="${400}" height="${240}" columns="${dataTableRoleExampleColumns}" data="${dataTableRoleData}" legend="${[position: 'top', alignment: 'center']}" /&gt;
-
-
-&lt;div id="dataTableRoles"&gt;&lt;/div&gt;</code></pre>
+<div class="sect3">
+<h4 id="html5-input-formats">3.2.1. HTML5 input formats</h4>
+<div class="paragraph">
+<p>For reference, the formats for the various input types are as follows:</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Input type</th>
+<th class="tableblock halign-left valign-top">Format</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">month</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">yyyy-MM</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">week</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">xxxx-'W&#8217;ww</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">date</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">yyyy-MM-dd</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">time</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">HH:mm:ss.SSS</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">datetime-local</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">yyyy-MM-dd&#8217;T&#8217;HH:mm:ss.SSS</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">datetime</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">yyyy-MM-dd&#8217;T&#8217;HH:mm:ss.SSSZZ</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>For all types Seconds and milliseconds can be omitted on input but are always rendered on output. The time zone for <em>datetime</em> inputs can be either the literal <em>'Z'</em> representing the <em>UTC</em> time zone or a value such as <em>+05:30</em> or <em>-08:00</em></p>
 </div>
 </div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="visualizations">4. Visualizations</h2>
+<h2 id="tags">4. Tags</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="available-visualizations">4.1. Available Visualizations</h3>
+<h3 id="dateField">4.1. joda:dateField</h3>
+<div class="sect3">
+<h4 id="purpose">4.1.1. Purpose</h4>
 <div class="paragraph">
-<p>Working examples for all available visualization can be found on this <a href="https://github.com/bmuschko/grails-google-visualization/blob/master/grails-app/views/index.gsp">GSP page</a> to this page on GitHub.</p>
+<p>Renders an HTML5 <em>date</em> input for <em>Joda-Time</em> properties</p>
+</div>
 </div>
 <div class="sect3">
-<h4 id="interactive-charts">4.1.1. Interactive Charts</h4>
+<h4 id="examples">4.1.2. Examples</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-groovy" data-lang="groovy">&lt;joda:dateField name="myProperty" value="${new LocalDate()}" /&gt;
+&lt;joda:dateField name="myProperty" value="${myBean.myProperty}" /&gt;</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="description">4.1.3. Description</h4>
+<div class="paragraph">
+<p>The value should be a <em>ReadableInstant</em> or <em>ReadablePartial</em> that supports at least the <em>year, monthOfYear</em> and <em>dayOfMonth</em> fields and will be formatted correctly for the input type.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="datePicker">4.2. joda:datePicker</h3>
+<div class="sect3">
+<h4 id="purpose-2">4.2.1. Purpose</h4>
+<div class="paragraph">
+<p>Renders a date picker input for <em>Joda-Time</em> properties in a similar way to the standard <code>g:datePicker</code> tag</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="examples-2">4.2.2. Examples</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-groovy" data-lang="groovy">&lt;joda:datePicker name="myDate" value="${new LocalDate()}" noSelection="['':'-Choose-']"/&gt;
+&lt;joda:datePicker name="myDate" value="${new LocalDate()}" years="${1930..1970}"/&gt;
+&lt;joda:datePicker name="myDate" value="${new LocalDate()}" years="[1930, 1940, 1950, 1960, 1970]"/&gt;</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="description-2">4.2.3. Description</h4>
+<div class="paragraph">
+<p>This tag is based on the default <em>g:datePicker</em> tag and exhibits very similar functionality. However, it is designed to be used with <em>Joda-Time</em> properties. All the attributes are as-per <em>g:datePicker</em> except that <em>'value'</em> and <em>'default'</em> will expect either a <a href="http://joda-time.sourceforge.net/api-release/org/joda/time/ReadablePartial.html">ReadablePartial</a> or <a href="http://joda-time.sourceforge.net/api-release/org/joda/time/ReadableInstant.html">ReadableInstant</a> instance or a String in <em>ISO8601</em> date/time format (such a String can be a partial representation depending on the precision attribute).</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="dateTimePicker">4.3. joda:dateTimePicker</h3>
+<div class="sect3">
+<h4 id="purpose-3">4.3.1. Purpose</h4>
+<div class="paragraph">
+<p>Renders a date/time picker input for <em>Joda-Time</em> properties in a similar way to the standard <code>g:datePicker</code> tag</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="examples-3">4.3.2. Examples</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-groovy" data-lang="groovy">&lt;joda:dateTimePicker name="myDate" value="${new DateTime()}" noSelection="['':'-Choose-']"/&gt;
+&lt;joda:dateTimePicker name="myDate" value="${new DateTime()}" precision="second" years="${1930..1970}"/&gt;
+&lt;joda:dateTimePicker name="myDate" value="${new DateTime()}" years="[1930, 1940, 1950, 1960, 1970]"/&gt;</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="description-3">4.3.3. Description</h4>
+<div class="paragraph">
+<p>This tag is based on the default <em>g:datePicker</em> tag and exhibits very similar functionality. However, it is designed to be used with <em>Joda-Time</em> properties. All the attributes are as-per <em>g:datePicker</em> except that <em>'value'</em> and <em>'default'</em> will expect either a <a href="http://joda-time.sourceforge.net/api-release/org/joda/time/DateTime.html">DateTime</a> or <a href="http://joda-time.sourceforge.net/api-release/org/joda/time/LocalDateTime.html">LocalDateTime</a> instance or a String in <em>ISO8601</em> date/time format (such a String can be a partial representation depending on the precision attribute). The other difference from <em>g:datePicker</em> is that the <em>'second'</em> precision is supported (although like <em>g:datePicker</em> the tag uses <em>'minute'</em> as the default precision).</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="dateTimeZoneSelect">4.4. joda:dateTimeZoneSelect</h3>
+<div class="sect3">
+<h4 id="purpose-4">4.4.1. Purpose</h4>
+<div class="paragraph">
+<p>This tag renders a select for <a href="http://joda-time.sourceforge.net/api-release/org/joda/time/DateTimeZone.html">DateTimeZone</a> values. It is very similar to the standard <em>g:timeZoneSelect</em> tag.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="examples-4">4.4.2. Examples</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-groovy" data-lang="groovy">&lt;joda:dateTimeZoneSelect name="myField" value="${myValue}" /&gt;</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="description-4">4.4.3. Description</h4>
+<div class="sect4">
+<h5 id="attributes">Attributes</h5>
 <div class="ulist">
 <ul>
 <li>
-<p><a href="http://code.google.com/apis/visualization/documentation/gallery/piechart.html">Pie Core Chart</a>: <code>&lt;gvisualization:pieCoreChart/&gt;</code></p>
+<p><code>name</code> - The name for the backing form field (as per <code>g:textField</code> and other standard tags)</p>
 </li>
 <li>
-<p><a href="http://code.google.com/apis/visualization/documentation/gallery/barchart.html">Bar Core Chart</a>: <code>&lt;gvisualization:barCoreChart/&gt;</code></p>
+<p><code>id</code> (optional) - The <em>id</em> for the backing form field. Defaults to the same as <em>name</em></p>
 </li>
 <li>
-<p><a href="http://code.google.com/apis/chart/interactive/docs/gallery/bubblechart.html">Bubble Core Chart</a>: <code>&lt;gvisualization:bubbleCoreChart/&gt;</code></p>
-</li>
-<li>
-<p><a href="http://code.google.com/apis/visualization/documentation/gallery/columnchart.html">Column Core Chart</a>: <code>&lt;gvisualization:columnCoreChart/&gt;</code></p>
-</li>
-<li>
-<p><a href="http://code.google.com/apis/visualization/documentation/gallery/areachart.html">Area Core Chart</a>: <code>&lt;gvisualization:areaCoreChart/&gt;</code></p>
-</li>
-<li>
-<p><a href="http://code.google.com/apis/visualization/documentation/gallery/linechart.html">Line Core Chart</a>: <code>&lt;gvisualization:lineCoreChart/&gt;</code></p>
-</li>
-<li>
-<p><a href="http://code.google.com/apis/visualization/documentation/gallery/scatterchart.html">Scatter Core Chart</a>: <code>&lt;gvisualization:scatterCoreChart/&gt;</code></p>
-</li>
-<li>
-<p><a href="http://code.google.com/apis/chart/interactive/docs/gallery/steppedareachart.html">Stepped Area Core Chart</a>: <code>&lt;gvisualization:steppedAreaCoreChart/&gt;</code></p>
-</li>
-<li>
-<p><a href="http://code.google.com/apis/chart/interactive/docs/gallery/candlestickchart.html">Candlestick Core Chart</a>: <code>&lt;gvisualization:candlestickCoreChart/&gt;</code></p>
-</li>
-<li>
-<p><a href="http://code.google.com/apis/chart/interactive/docs/gallery/combochart.html">Combo Core Chart</a>: <code>&lt;gvisualization:comboCoreChart/&gt;</code></p>
-</li>
-<li>
-<p><a href="http://code.google.com/apis/visualization/documentation/gallery/gauge.html">Gauge</a>: <code>&lt;gvisualization:gauge/&gt;</code></p>
-</li>
-<li>
-<p><a href="http://code.google.com/apis/visualization/documentation/gallery/table.html">Table</a>: <code>&lt;gvisualization:table/&gt;</code></p>
-</li>
-<li>
-<p><a href="http://code.google.com/apis/visualization/documentation/gallery/map.html">Map</a>: <code>&lt;gvisualization:map/&gt;</code></p>
-</li>
-<li>
-<p><a href="http://code.google.com/apis/visualization/documentation/gallery/annotatedtimeline.html">Annotated Time Line</a>: <code>&lt;gvisualization:annotatedTimeLine/&gt;</code></p>
-</li>
-<li>
-<p><a href="http://code.google.com/apis/visualization/documentation/gallery/orgchart.html">Organizational Chart</a>: <code>&lt;gvisualization:orgChart/&gt;</code></p>
-</li>
-<li>
-<p><a href="http://code.google.com/apis/visualization/documentation/gallery/intensitymap.html">Intensity Map</a>: <code>&lt;gvisualization:intensityMap/&gt;</code></p>
-</li>
-<li>
-<p><a href="http://code.google.com/apis/visualization/documentation/gallery/geomap.html">Geo Map</a>: <code>&lt;gvisualization:geoMap/&gt;</code></p>
-</li>
-<li>
-<p><a href="http://code.google.com/apis/chart/interactive/docs/gallery/geochart.html">Geo Chart</a>: <code>&lt;gvisualization:geoChart/&gt;</code></p>
-</li>
-<li>
-<p><a href="http://code.google.com/apis/visualization/documentation/gallery/motionchart.html">Motion Chart</a>: <code>&lt;gvisualization:motionChart/&gt;</code></p>
-</li>
-<li>
-<p><a href="http://code.google.com/apis/visualization/documentation/gallery/treemap.html">Tree Map</a>: <code>&lt;gvisualization:treeMap/&gt;</code></p>
-</li>
-<li>
-<p><a href="https://developers.google.com/chart/interactive/docs/gallery/timeline">Timeline</a>: <code>&lt;gvisualization:timeLine/&gt;</code></p>
-</li>
-<li>
-<p><a href="https://developers.google.com/chart/interactive/docs/gallery/calendar">Calendar Chart</a>: <code>&lt;gvisualization:calendarChart/&gt;</code></p>
+<p><code>value</code> (optional) - The currently selected <code>DateTimeZone</code> value. Defaults to <code>DateTimeZone.getDefault()</code></p>
 </li>
 </ul>
 </div>
 </div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="datetimeField">4.5. joda:datetimeField</h3>
 <div class="sect3">
-<h4 id="deprecated-charts">4.1.2. Deprecated Charts</h4>
+<h4 id="purpose-5">4.5.1. Purpose</h4>
+<div class="paragraph">
+<p>Renders an HTML5 <em>datetime</em> input for <em>Joda-Time</em> properties</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="examples-5">4.5.2. Examples</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-groovy" data-lang="groovy">&lt;joda:datetimeField name="myProperty" value="${new DateTime()}" /&gt;
+&lt;joda:datetimeField name="myProperty" value="${myBean.myProperty}" /&gt;</code></pre>
+</div>
+</div>
+<div class="sect4">
+<h5 id="description-5">Description</h5>
+<div class="paragraph">
+<p>The value should be a <em>ReadableInstant</em> and will be formatted correctly for the input type.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="datetimeLocalField">4.6. joda:datetimeLocalField</h3>
+<div class="sect3">
+<h4 id="purpose-6">4.6.1. Purpose</h4>
+<div class="paragraph">
+<p>Renders an HTML5 <em>datetime-local</em> input for <em>Joda-Time</em> properties</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="examples-6">4.6.2. Examples</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-groovy" data-lang="groovy">&lt;joda:datetimeLocalField name="myProperty" value="${new LocalDateTime()}" /&gt;
+&lt;joda:datetimeLocalField name="myProperty" value="${myBean.myProperty}" /&gt;</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="description-6">4.6.3. Description</h4>
+<div class="paragraph">
+<p>The value should be a <em>ReadableInstant</em> or <em>ReadablePartial</em> that supports at least the <em>year, monthOfYear, dayOfMonth, hourOfDay</em> and <em>minuteOfHour</em> fields and will be formatted correctly for the input type.</p>
+</div>
+<div class="paragraph">
+<p>inlcude::ref/tags/format.adoc[]</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="formatPeriod">4.7. joda:formatPeriod</h3>
+<div class="sect3">
+<h4 id="purpose-7">4.7.1. Purpose</h4>
+<div class="paragraph">
+<p>This tag renders a <a href="http://joda-time.sourceforge.net/api-release/org/joda/time/Duration.html">Duration</a> or <a href="http://joda-time.sourceforge.net/api-release/org/joda/time/Period.html">Period</a> value.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="examples-7">4.7.2. Examples</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-groovy" data-lang="groovy">&lt;joda:formatPeriod value="${myValue}" /&gt;
+&lt;joda:formatPeriod value="${myValue}" fields="days,hours,minutes" /&gt;</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="description-7">4.7.3. Description</h4>
+<div class="sect4">
+<h5 id="attributes-2">Attributes</h5>
 <div class="ulist">
 <ul>
 <li>
-<p><a href="http://code.google.com/apis/visualization/documentation/gallery/piechart_old.html">Pie Chart</a>: <code>&lt;gvisualization:pieChart/&gt;</code></p>
+<p><code>value</code> (required) - The value to format which can be a <code>Period</code> or <code>Duration</code> instance.</p>
 </li>
 <li>
-<p><a href="http://code.google.com/apis/visualization/documentation/gallery/barchart_old.html">Bar Chart</a>: <code>&lt;gvisualization:barChart/&gt;</code></p>
-</li>
-<li>
-<p><a href="http://code.google.com/apis/visualization/documentation/gallery/columnchart_old.html">Column Chart</a>: <code>&lt;gvisualization:columnChart/&gt;</code></p>
-</li>
-<li>
-<p><a href="http://code.google.com/apis/visualization/documentation/gallery/areachart_old.html">Area Chart</a>: <code>&lt;gvisualization:areaChart/&gt;</code></p>
-</li>
-<li>
-<p><a href="http://code.google.com/apis/visualization/documentation/gallery/linechart_old.html">Line Chart</a>: <code>&lt;gvisualization:lineChart/&gt;</code></p>
-</li>
-<li>
-<p><a href="http://code.google.com/apis/visualization/documentation/gallery/scatterchart_old.html">Scatter Chart</a>: <code>&lt;gvisualization:scatterChart/&gt;</code></p>
+<p><code>fields</code> (optional) - A comma separated list of the fields to provide input elements for. Valid values are <em>"years", "months", "weeks", "days", "hours", "minutes", "seconds"</em> and <em>"millis"</em> with the default being <em>"hours,minutes,seconds"</em></p>
 </li>
 </ul>
+</div>
+<div class="paragraph">
+<p>Values are normalized using the <em>fields</em> specified according to the rules in <a href="http://joda-time.sourceforge.net/api-release/org/joda/time/Period.html#normalizedStandard(org.joda.time.PeriodType)">Period.normalizedStandard</a> although the tag will also silently drop <em>years</em> and <em>months</em> from the <em>value</em> if they are not contained in the specified <em>fields</em> as otherwise an <code>UnsupportedOperationException</code> would be thrown by Joda-Time.</p>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="configuration">4.7.4. Configuration</h4>
+<div class="paragraph">
+<p>Default fields can be set in <code>Config.groovy</code> using the key <em>jodatime.periodpicker.default.fields</em></p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="inputPattern">4.8. joda:inputPattern</h3>
+<div class="sect3">
+<h4 id="purpose-8">4.8.1. Purpose</h4>
+<div class="paragraph">
+<p>This tag outputs the expected input pattern for a given type. It can be used for example to output a label to go alongside a text field or to configure a rich input control such as the <a href="http://grails.org/plugin/grails-ui" class="bare">http://grails.org/plugin/grails-ui</a> <em>gui:datePicker</em> tag[Grails UI].</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="examples-8">4.8.2. Examples</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-groovy" data-lang="groovy">&lt;joda:inputPattern/&gt;
+&lt;joda:inputPattern type="org.joda.time.LocalDate"/&gt;
+&lt;joda:inputPattern locale="fr"/&gt;</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="description-8">4.8.3. Description</h4>
+<div class="sect4">
+<h5 id="attributes-3">Attributes</h5>
+<div class="ulist">
+<ul>
+<li>
+<p><code>type</code> (optional) - The type to output the pattern for. Can be a <code>Class</code> or the class name. Defaults to <em>DateTime</em></p>
+</li>
+<li>
+<p><code>locale</code> (optional) - The locale for the pattern. Can be a <code>Locale</code> object or an ISO locale string such as <em>"en_GB"</em>. Defaults to current request locale</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="monthField">4.9. joda:monthField</h3>
+<div class="sect3">
+<h4 id="purpose-9">4.9.1. Purpose</h4>
+<div class="paragraph">
+<p>Renders an HTML5 <em>month</em> input for <em>Joda-Time</em> properties</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="examples-9">4.9.2. Examples</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-groovy" data-lang="groovy">&lt;joda:monthField name="myProperty" value="${new LocalDate()}" /&gt;
+&lt;joda:monthField name="myProperty" value="${myBean.myProperty}" /&gt;</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="description-9">4.9.3. Description</h4>
+<div class="paragraph">
+<p>The value should be a <em>ReadableInstant</em> or <em>ReadablePartial</em> that supports the <em>year</em> and <em>monthOfYear</em> fields and will be formatted correctly for the input type.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="periodPicker">4.10. joda:periodPicker</h3>
+<div class="sect3">
+<h4 id="purpose-10">4.10.1. Purpose</h4>
+<div class="paragraph">
+<p>This tag renders an input control for a <a href="http://joda-time.sourceforge.net/api-release/org/joda/time/Duration.html">Duration</a> or <a href="http://joda-time.sourceforge.net/api-release/org/joda/time/Period.html">Period</a> value.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="examples-10">4.10.2. Examples</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-groovy" data-lang="groovy">&lt;joda:periodPicker name="myField" value="${myValue}" /&gt;
+&lt;joda:periodPicker name="myField" value="${myValue}" fields="days,hours,minutes" /&gt;</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="description-10">4.10.3. Description</h4>
+<div class="sect4">
+<h5 id="attributes-4">Attributes</h5>
+<div class="ulist">
+<ul>
+<li>
+<p><code>name</code> - The name for the backing form field (as per <code>g:textField</code> and other standard tags)</p>
+</li>
+<li>
+<p><code>id</code> (optional) - The <em>id</em> for the backing form field. Defaults to the same as <em>name</em></p>
+</li>
+<li>
+<p><code>value</code> (optional) - The currently selected value which can be a <code>Period</code> or <code>Duration</code> instance. Defaults to <code>new Period()</code></p>
+</li>
+<li>
+<p><code>fields</code> (optional) - A comma separated list of the fields to provide input elements for. Valid values are <em>"years", "months", "weeks", "days", "hours", "minutes", "seconds"</em> and <em>"millis"</em> with the default being <em>"hours,minutes,seconds"</em></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="configuration-2">Configuration</h5>
+<div class="paragraph">
+<p>Default fields can be set in <code>Config.groovy</code> using the key <em>jodatime.periodpicker.default.fields</em></p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="internationalization">Internationalization</h5>
+<div class="paragraph">
+<p>Labels for each field can be overridden in <code>messages.properties</code> using the keys <em>org.joda.time.DurationFieldType.hours, org.joda.time.DurationFieldType.minutes</em> and so on.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="time">4.11. joda:time</h3>
+<div class="sect3">
+<h4 id="purpose-11">4.11.1. Purpose</h4>
+<div class="paragraph">
+<p>This tag outputs an HTML5 <code>&lt;time&gt;</code> tag with a correctly formatted <code>datetime</code> attribute.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="examples-11">4.11.2. Examples</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-groovy" data-lang="groovy">&lt;joda:time value="${new LocalDate()}"/&gt;
+&lt;!-- output: &lt;time datetime="2011-11-03"&gt;03-Nov-2011&lt;/time&gt; --&gt;
+
+&lt;joda:time value="${new DateTime()}"/&gt;
+&lt;!-- output: &lt;time datetime="2011-11-03T17:25+00:00"&gt;03-Nov-2011 17:25:00&lt;/time&gt; --&gt;
+
+&lt;joda:time value="${new LocalDate()}" pubdate=""/&gt;
+&lt;!-- output: &lt;time datetime="2011-11-03" pubdate=""&gt;03-Nov-2011&lt;/time&gt; --&gt;
+
+&lt;joda:time value="${new LocalDate()}"&gt;&lt;joda:format value="${it}" pattern="d MMMM"/&gt;&lt;/joda:time&gt;
+&lt;!-- output: &lt;time datetime="2011-11-03"&gt;3 November&lt;/time&gt; --&gt;
+
+&lt;joda:time value="${new LocalDate()}" var="theDate"&gt;&lt;joda:format value="${theDate}" pattern="d MMMM"/&gt;&lt;/joda:time&gt;
+&lt;!-- output: &lt;time datetime="2011-11-03"&gt;3 November&lt;/time&gt; --&gt;</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="description-11">4.11.3. Description</h4>
+<div class="paragraph">
+<p>If the tag has a body then the <code>value</code> attribute is passed to it (see example above). If the body is omitted then the value is formatted as per the <code>joda:format</code> tag.
+If the <code>value</code> attribute is omitted then the current <code>DateTime</code> is used. If the <code>value</code> attribute is <code>null</code> then the tag outputs nothing.</p>
+</div>
+<div class="sect4">
+<h5 id="attributes-5">Attributes</h5>
+<div class="ulist">
+<ul>
+<li>
+<p><code>value</code> (optional) - An instance of <code>ReadablePartial</code> or <code>ReadableInstant</code> or defaults to <code>new DateTime()</code></p>
+</li>
+<li>
+<p><code>var</code> (optional) - A name for the variable that is passed to the tag body. Defaults to <code>it</code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="timeField">4.12. joda:timeField</h3>
+<div class="sect3">
+<h4 id="purpose-12">4.12.1. Purpose</h4>
+<div class="paragraph">
+<p>Renders an HTML5 <em>time</em> input for <em>Joda-Time</em> properties</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="examples-12">4.12.2. Examples</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-groovy" data-lang="groovy">&lt;joda:timeField name="myProperty" value="${new LocalTime()}" /&gt;
+&lt;joda:timeField name="myProperty" value="${myBean.myProperty}" /&gt;</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="description-12">4.12.3. Description</h4>
+<div class="paragraph">
+<p>The value should be a <em>ReadableInstant</em> or <em>ReadablePartial</em> that supports at least the <em>hourOfDay</em> and <em>minuteOfHour</em> fields and will be formatted correctly for the input type.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="weekField">4.13. joda:weekField</h3>
+<div class="sect3">
+<h4 id="purpose-13">4.13.1. Purpose</h4>
+<div class="paragraph">
+<p>Renders an HTML5 <em>week</em> input for <em>Joda-Time</em> properties</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="examples-13">4.13.2. Examples</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-groovy" data-lang="groovy">&lt;joda:weekField name="myProperty" value="${new LocalDate()}" /&gt;
+&lt;joda:weekField name="myProperty" value="${myBean.myProperty}" /&gt;</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="description-13">4.13.3. Description</h4>
+<div class="paragraph">
+<p>The value should be a <em>ReadableInstant</em> or <em>ReadablePartial</em> that supports the <em>year</em> and <em>weekyear</em> fields and will be formatted correctly for the input type.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="Scaffolding">5. Scaffolding</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The Joda-Time plugin enhances Grails&#8217;s dynamic scaffolding so it is compatible with domain classes with the following types:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="http://joda-time.sourceforge.net/api-release/org/joda/time/LocalTime.html">LocalTime</a></p>
+</li>
+<li>
+<p><a href="http://joda-time.sourceforge.net/api-release/org/joda/time/LocalDate.html">LocalDate</a></p>
+</li>
+<li>
+<p><a href="http://joda-time.sourceforge.net/api-release/org/joda/time/LocalDateTime.html">LocalDateTime</a></p>
+</li>
+<li>
+<p><a href="http://joda-time.sourceforge.net/api-release/org/joda/time/DateTime.html">DateTime</a></p>
+</li>
+<li>
+<p><a href="http://joda-time.sourceforge.net/api-release/org/joda/time/Duration.html">Duration</a></p>
+</li>
+<li>
+<p><a href="http://joda-time.sourceforge.net/api-release/org/joda/time/Period.html">Period</a></p>
+</li>
+<li>
+<p><a href="http://joda-time.sourceforge.net/api-release/org/joda/time/DateTimeZone.html">DateTimeZone</a></p>
+</li>
+<li>
+<p><a href="http://joda-time.sourceforge.net/api-release/org/joda/time/Instant.html">Instant</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>To install scaffolding templates use the command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-groovy" data-lang="groovy">grails install-joda-time-templates</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Create and edit views use the <em>joda:dateTimePicker, joda:datePicker, joda:timePicker</em> or <em>joda:periodPicker</em> (see above) as appropriate. Columns on list views are sortable.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="jsonandxml">6. JSON and XML Rendering</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The plugin registers JSON and XML converters for:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="http://joda-time.sourceforge.net/api-release/org/joda/time/LocalTime.html">LocalTime</a></p>
+</li>
+<li>
+<p><a href="http://joda-time.sourceforge.net/api-release/org/joda/time/LocalDate.html">LocalDate</a></p>
+</li>
+<li>
+<p><a href="http://joda-time.sourceforge.net/api-release/org/joda/time/LocalDateTime.html">LocalDateTime</a></p>
+</li>
+<li>
+<p><a href="http://joda-time.sourceforge.net/api-release/org/joda/time/DateTime.html">DateTime</a></p>
+</li>
+<li>
+<p><a href="http://joda-time.sourceforge.net/api-release/org/joda/time/DateTimeZone.html">DateTimeZone</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="integrating">7. Integrating with Other Plugins</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="a-href-http-freeside-co-grails-fields-fields-a">7.1. <a href="http://freeside.co/grails-fields">Fields</a></h3>
+<div class="paragraph">
+<p>The Joda-Time plugin supplies templates so that inputs for Joda-Time properties will render correctly. You can override these templates in your own application if you want to render the inputs differently. See the Fields plugin documentation for details on how to do so.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="a-href-http-grails-org-plugin-grails-ui-grails-ui-a">7.2. <a href="http://grails.org/plugin/grails-ui">Grails UI</a></h3>
+<div class="paragraph">
+<p>The Grails-UI Plugin&#8217;s datePicker tag works quite well with <em>Joda-Time</em> types such as <em>DateTime, LocalDate</em> or <em>LocalDateTime</em> instances. The tag&#8217;s <em>formatString</em> argument can easily be set with <em>joda:inputPattern</em> (see above). The value attribute needs to be converted to a <em>java.util.Date</em> instance. Examples of use might be:</p>
+</div>
+<div class="paragraph">
+<p>A <em>DateTime</em> property with time input:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-groovy" data-lang="groovy">&lt;gui:datePicker id="myDateTimeProperty" value="${myInstance?.myDateTimeProperty?.toDate()}" includeTime="true" formatString="${joda.inputPattern()}"/&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>A <em>LocalDate</em> property:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-groovy" data-lang="groovy">&lt;gui:datePicker id="myLocalDateProperty" value="${myInstance?.myLocalDateProperty?.toDateTime()?.toDate()}" formatString="${joda.inputPattern(type: org.joda.time.LocalDate)}"/&gt;</code></pre>
 </div>
 </div>
 </div>
@@ -1829,8 +1553,8 @@ def popularityData = [['Germany', 200], ['United States', 300], ['Brazil', 400],
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 2.3-SNAPSHOT<br>
-Last updated 2016-09-16 00:14:02 IST
+Version 2.0.0<br>
+Last updated 2016-09-11 12:19:07 IST
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css">
